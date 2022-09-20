@@ -16,10 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -35,6 +37,7 @@ public class Ejer1 extends Application {
 	private TextField tfProfesion;
 	private TextField tfHermanos;
 	private ComboBox<String> edades;
+	private Label userSelectionMsg;
 	
 	@Override
 	public void start(Stage Stage) {
@@ -75,6 +78,9 @@ public class Ejer1 extends Application {
         root.add(rbtOtro, 3, 3, 1, 1);
         ToggleGroup group = new ToggleGroup();
         group.getToggles().addAll(rbtHombre,rbtMujer,rbtOtro);
+        
+        
+        
         
         
         cbxPregunta = new CheckBox("¿Práctica algún deporte?");
@@ -121,9 +127,7 @@ public class Ejer1 extends Application {
         sbCine.setSnapToTicks(true);
         root.add(sbCine, 1, 9, 3, 1);
         
-        
-
-        
+ 
 
 		Button btnAceptar = new Button("Aceptar");
 		root.add(btnAceptar, 0 , 10, 2, 1);
@@ -153,6 +157,13 @@ public class Ejer1 extends Application {
         }
     }
 	
+	public void changed(ObservableValue<? extends Toggle> observable,  Toggle oldBtn,  Toggle newBtn) {
+		String selectedLabel = "None";
+		if (newBtn != null ) {
+			selectedLabel = ((Labeled)newBtn).getText();
+			}
+		userSelectionMsg.setText("Your selection: " + selectedLabel);
+	}
 	
 	
 	

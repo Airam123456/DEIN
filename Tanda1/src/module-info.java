@@ -5,4 +5,5 @@ module HelloFX {
 	requires javafx.base;
 	
 	opens ejer1 to javafx.graphics, javafx.fxml;
+	opens ejer2 to javafx.graphics, javafx.fxml;
 }
