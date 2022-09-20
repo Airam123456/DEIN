@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Persona;
@@ -61,10 +62,12 @@ public class Ejer2 extends Application{
 		personas = FXCollections.observableArrayList();
 		//Tabla
 		table = new TableView<>(personas);
+
 		
 		//Columnas de la tabla
 		TableColumn<Persona, String> colNombre = new TableColumn<>("NOMBRE");
 		colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		
 		
 		TableColumn<Persona, String> colApellido = new TableColumn<>("APELLIDOS");
 		colApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
@@ -73,6 +76,7 @@ public class Ejer2 extends Application{
 		colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
 		
 		table.getColumns().addAll(colNombre, colApellido, colEdad);
+		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		
 		root.add(table, 1,0,2,8);
 		
