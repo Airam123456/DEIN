@@ -8,4 +8,5 @@ module HelloFX {
 	opens ejer2 to javafx.graphics, javafx.fxml;
 	opens model to javafx.graphics, javafx.fxml, javafx.base;
 	opens ejer3 to javafx.graphics, javafx.fxml;
+	opens ejer4 to javafx.graphics, javafx.fxml;
 }
