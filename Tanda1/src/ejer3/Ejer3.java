@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,6 +21,8 @@ import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
@@ -68,7 +71,7 @@ public class Ejer3 extends Application{
 		btnAgregar = new Button("Agregar Persona");
 		root.add(btnAgregar, 0,7,1,1);
 		
-		btnAgregar.setOnAction(e -> addPersona());
+		btnAgregar.setOnAction(e -> addPersona("a"));
 		
 		//Lista de personas
 		personas = FXCollections.observableArrayList();
@@ -90,6 +93,8 @@ public class Ejer3 extends Application{
 		
 		colEdad = new TableColumn<>("EDAD");
 		colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
+		colEdad.setStyle( "-fx-alignment: CENTER-RIGHT;");
+
 		
 		table.getColumns().addAll(colNombre, colApellido, colEdad);
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -102,18 +107,32 @@ public class Ejer3 extends Application{
 		
 		//Boton Modificar
 		btnModificar = new Button("Modificar Persona");
-		root.add(btnModificar, 1, 8, 1, 1);
 		
-		btnModificar.setOnAction(e -> addPersona());
+		btnModificar.setOnAction(e -> addPersona("m"));
 		
 		//Boton Eliminar
 		btnEliminar = new Button("Eliminar Persona");
-		root.add(btnEliminar, 2, 8, 1, 1);
 		
 		btnEliminar.setOnAction(e -> eliminar());
 		
 		btnModificar.setDisable(true);
 		btnEliminar.setDisable(true);
+		
+		
+		//Hace que la tabla crezca
+		ColumnConstraints cc1 = new ColumnConstraints();
+		ColumnConstraints cc2 = new ColumnConstraints();
+		
+		cc2.setHgrow(Priority.ALWAYS);
+		
+		root.getColumnConstraints().add(cc1);
+		root.getColumnConstraints().add(cc2);
+		
+		//Metemos los botones en un flow pane
+		FlowPane flow = new FlowPane(5,5);
+		flow.setAlignment(Pos.CENTER);
+		flow.getChildren().addAll(btnModificar, btnEliminar);
+		root.add(flow, 1, 8, 1, 1);
 		
 		//Mostrar escena
 		Scene scene = new Scene(root);
@@ -123,7 +142,7 @@ public class Ejer3 extends Application{
 		
 				
 	}	
-    public void addPersona() {
+    public void addPersona(String tipo) {
     	
     	String nombre = txtNombre.getText();
     	String apellidos = txtApellidos.getText();
@@ -164,7 +183,7 @@ public class Ejer3 extends Application{
 				}
 				else {
 					//Se comprueba se estamos agregando o modificando
-					if(posicion == -1) {
+					if(tipo.equals("a")) {
 						
 						//Si todo esta bien se lo notificamos al usuario
 						personas.add(p);
@@ -180,6 +199,8 @@ public class Ejer3 extends Application{
 						
 						//Si todo esta bien se lo notificamos al usuario
 						personas.set(posicion,p);
+//						Persona p = table.getSelectionModel().getSelectedItem();
+//						p.setNombre(txtNombre.getText());
 						Alert alert = new Alert(Alert.AlertType.INFORMATION);
 						alert.initOwner(this.btnAgregar.getScene().getWindow());
 						alert.setHeaderText(null);
@@ -187,7 +208,7 @@ public class Ejer3 extends Application{
 						alert.setContentText("Persona modificada correctamente");
 						alert.showAndWait();
 						clearFields();
-						posicion = -1;
+//						posicion = -1;
 					}
 				}	
 			}
@@ -207,6 +228,7 @@ public class Ejer3 extends Application{
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
 			alert.setContentText("La edad tiene que ser un entero");
+			e.printStackTrace();
 			alert.showAndWait();
 		}
 		btnModificar.setDisable(true);
@@ -257,9 +279,9 @@ public class Ejer3 extends Application{
 
     // Limpiar los campos
     public void clearFields() {
-    	txtNombre.setText(null);
-        txtApellidos.setText(null);
-        txtEdad.setText(null);
+    	txtNombre.setText("");
+        txtApellidos.setText("");
+        txtEdad.setText("");
     }
 	
 	public static void main(String[] args) {

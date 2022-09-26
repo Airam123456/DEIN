@@ -1,17 +1,10 @@
-/.DS_Store
-/binding/
-/collections/
-/container/
 /control/
-/css/
 /event/
 /image/
 /intro/
 /model/
 /node/
-/picture/
 /scene/
 /shape/
 /stage/
 /style/
-/module-info.class

@@ -1,4 +1,4 @@
-package ejer4;
+package ejer5;
 
 import java.util.Arrays;
 
@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Persona;
 
-public class Ejer4 extends Application{
+public class Ejer5 extends Application{
 	
 	private TextField txtNombre, txtApellidos, txtEdad;
 	private TableView<Persona> table;
@@ -38,7 +38,8 @@ public class Ejer4 extends Application{
 	private TableColumn<Persona, String> colNombre;
 	private TableColumn<Persona, String> colApellido;
 	private TableColumn<Persona, String> colEdad;
-	private Button btnAgregar, btnGuardar, btnCancelar;
+	private Button btnAgregar, btnGuardar, btnCancelar, btnModificar, btnEliminar;
+	private TableViewSelectionModel<Persona> tsm;
 	
 	
 	public void start (Stage stage) {
@@ -51,7 +52,15 @@ public class Ejer4 extends Application{
 		
 		//Boton agregar
 		btnAgregar = new Button("Agregar Persona");
-		btnAgregar.setOnAction(e -> nuevaVentana());
+		btnAgregar.setOnAction(e -> nuevaVentana("a"));
+		
+		//Boton modificar
+		btnModificar = new Button("Modificar Persona");
+		btnModificar.setOnAction(e -> nuevaVentana("m"));
+		
+		//Boton eliminar
+		btnEliminar = new Button("Eliminar Persona");
+		btnEliminar.setOnAction(e -> eliminar());
 		
 		//Lista de personas
 		personas = FXCollections.observableArrayList();
@@ -68,7 +77,6 @@ public class Ejer4 extends Application{
 		colEdad = new TableColumn<>("EDAD");
 		colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
 		colEdad.setStyle( "-fx-alignment: CENTER-RIGHT;");
-
 		
 		table.getColumns().addAll(colNombre, colApellido, colEdad);
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -88,7 +96,7 @@ public class Ejer4 extends Application{
 		//Metemos los botones en un flow pane
 		FlowPane flow = new FlowPane(5,5);
 		flow.setAlignment(Pos.CENTER);
-		flow.getChildren().addAll(btnAgregar);
+		flow.getChildren().addAll(btnAgregar, btnModificar, btnEliminar);
 		root.add(flow, 0, 4, 1, 1);
 		
 		
@@ -100,7 +108,7 @@ public class Ejer4 extends Application{
 		
 				
 	}	
-	public void nuevaVentana() {
+	public void nuevaVentana(String tipo) {
 		GridPane root = new GridPane();
 		root.setHgap(15);
         root.setVgap(15);
@@ -124,6 +132,14 @@ public class Ejer4 extends Application{
 		txtEdad = new TextField();
 		root.add(txtEdad, 1,3,1,1);
 		
+		if(tipo.equals("m")) {
+			
+				txtNombre.setText(((Persona) tsm.getSelectedItem()).getNombre());
+				txtApellidos.setText(((Persona) tsm.getSelectedItem()).getApellido());
+				txtEdad.setText(((Persona) tsm.getSelectedItem()).getEdad()+"");
+		}
+		
+		
 		//Botones
 		btnGuardar = new Button("Guardar");
 		//root.add(btnGuardar, 0, 4, 1, 1);
@@ -143,7 +159,13 @@ public class Ejer4 extends Application{
         Scene newScene = new Scene(root);
         Stage newStage = new Stage();
         newStage.setScene(newScene);
-        newStage.setTitle("Nueva Persona");
+        if(tipo.equals("a")) {
+            newStage.setTitle("Nueva Persona");
+        }
+        else {
+            newStage.setTitle("Modifivar Persona");
+        }
+        
         newStage.setResizable(false);
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.show();
@@ -225,12 +247,47 @@ public class Ejer4 extends Application{
 			alert.showAndWait();
 		}
     }
+    
+    //Extraer los datos a los campos de texto
+	public void seleccionar() {
+		
+		tsm = table.getSelectionModel();
+		btnModificar.setDisable(false);
+		btnEliminar.setDisable(false);
+	}
 
 	
 	//Cerrar la ventana
 	public void cancelar() {
 		Stage myStage =(Stage) this.btnCancelar.getScene().getWindow();
 		myStage.close();
+	}
+	
+	public void eliminar() {
+        tsm = table.getSelectionModel();
+   
+        // Get all selected row indices in an array
+        ObservableList<Integer> list = tsm.getSelectedIndices();
+        Integer[] selectedIndices = new Integer[list.size()];
+        selectedIndices = list.toArray(selectedIndices);
+
+        // Sort the array
+        Arrays.sort(selectedIndices);
+        // Delete rows (last to first)
+        for(int i = selectedIndices.length - 1; i >= 0; i--) {
+            tsm.clearSelection(selectedIndices[i].intValue());
+            table.getItems().remove(selectedIndices[i].intValue());
+        }
+        
+        clearFields();
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.initOwner(this.btnEliminar.getScene().getWindow());
+		alert.setHeaderText(null);
+		alert.setTitle("Info");
+		alert.setContentText("Persona eliminada correctamente");
+		alert.showAndWait();
+		btnModificar.setDisable(true);
+		btnEliminar.setDisable(true);
 	}
 	
 

@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
@@ -74,6 +75,8 @@ public class Ejer2 extends Application{
 		
 		TableColumn<Persona, String> colEdad = new TableColumn<>("EDAD");
 		colEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
+		colEdad.setStyle( "-fx-alignment: CENTER-RIGHT;");
+
 		
 		table.getColumns().addAll(colNombre, colApellido, colEdad);
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -83,6 +86,17 @@ public class Ejer2 extends Application{
 		//Añadir icono
 		Image imagen = new Image(getClass().getResource("/picture/agenda.png").toString());
 		stage.getIcons().add(imagen);
+		
+		
+		//Hace que la tabla crezca
+		ColumnConstraints cc1 = new ColumnConstraints();
+		ColumnConstraints cc2 = new ColumnConstraints();
+		
+		cc2.setHgrow(Priority.ALWAYS);
+		
+		root.getColumnConstraints().add(cc1);
+		root.getColumnConstraints().add(cc2);
+		
 		
 		//Mostrar escena
 		Scene scene = new Scene(root);
