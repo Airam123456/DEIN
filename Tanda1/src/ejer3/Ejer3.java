@@ -78,8 +78,8 @@ public class Ejer3 extends Application{
 		//Tabla
 		table = new TableView<>(personas);
 		
-		EventHandler<MouseEvent> mouseEventHandler = e -> extraerDatos();
-		table.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandler);
+		EventHandler<MouseEvent> selecionarDato = e -> extraerDatos();
+		table.addEventHandler(MouseEvent.MOUSE_CLICKED, selecionarDato);
 		
 		//tsm.setSelectionMode(SelectionMode.SINGLE);
 
