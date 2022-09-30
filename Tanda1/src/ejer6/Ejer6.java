@@ -5,6 +5,8 @@ import java.util.Arrays;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -45,6 +47,12 @@ public class Ejer6 extends Application{
 	private Label lbFiltrar;
 	
 	
+	
+	private Persona p;
+	
+	
+	
+	
 	public void start (Stage stage) {
 		
 		GridPane root = new GridPane();
@@ -74,10 +82,11 @@ public class Ejer6 extends Application{
 		
 		//Boton importar
 		btnImportar =  new Button("Importar");
-		
+		btnImportar.setOnAction(e -> importar());
 		
 		//Boton exportar
 		btnExportar = new Button("Exportar");
+		btnExportar.setOnAction(e -> exportar());
 		
 		//Lista de personas
 		personas = FXCollections.observableArrayList();
@@ -138,8 +147,52 @@ public class Ejer6 extends Application{
 		stage.setTitle("PERSONAS");
 		stage.show();
 		
+		// Esta parte a continuacion esta copiada de: https://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
+		
+		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
+		FilteredList<Persona> filteredData = new FilteredList<>(personas, p -> true);
+		
+		// 2. Set the filter Predicate whenever the filter changes.
+		txtFiltrar.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(person -> {
+				// If filter text is empty, display all persons.
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				// Compare first name and last name of every person with filter text.
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (person.getNombre().toLowerCase().contains(lowerCaseFilter)) {
+					return true; // Filter matches first name.
+				} else if (person.getApellido().toLowerCase().contains(lowerCaseFilter)) {
+					return true; // Filter matches last name.
+				}
+				return false; // Does not match.
+			});
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<Persona> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		sortedData.comparatorProperty().bind(table.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		table.setItems(sortedData);
+		
 				
 	}	
+	private void importar() {
+		
+
+	}
+	
+	private void exportar() {
+		
+		
+	}
+	
 	public void nuevaVentana(TableView<Persona> table, String tipo) {
 		GridPane root = new GridPane();
 		root.setHgap(15);
