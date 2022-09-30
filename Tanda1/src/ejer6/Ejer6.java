@@ -1,4 +1,4 @@
-package ejer5;
+package ejer6;
 
 import java.util.Arrays;
 
@@ -31,17 +31,18 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import model.Persona;
 
-public class Ejer5 extends Application{
+public class Ejer6 extends Application{
 	
-	private TextField txtNombre, txtApellidos, txtEdad;
+	private TextField txtNombre, txtApellidos, txtEdad, txtFiltrar;
 	private TableView<Persona> table;
 	private ObservableList<Persona> personas;
 	private TableColumn<Persona, String> colNombre;
 	private TableColumn<Persona, String> colApellido;
 	private TableColumn<Persona, String> colEdad;
-	private Button btnAgregar, btnGuardar, btnCancelar, btnModificar, btnEliminar;
+	private Button btnAgregar, btnGuardar, btnCancelar, btnModificar, btnEliminar, btnImportar, btnExportar;
 	private TableViewSelectionModel<Persona> tsm;
 	private int posicion;
+	private Label lbFiltrar;
 	
 	
 	public void start (Stage stage) {
@@ -67,6 +68,17 @@ public class Ejer5 extends Application{
 		btnModificar.setDisable(true);
 		btnEliminar.setDisable(true);
 		
+		//Filtrar
+		lbFiltrar = new Label("Filtrar por nombre: ");
+		txtFiltrar = new TextField();
+		
+		//Boton importar
+		btnImportar =  new Button("Importar");
+		
+		
+		//Boton exportar
+		btnExportar = new Button("Exportar");
+		
 		//Lista de personas
 		personas = FXCollections.observableArrayList();
 		//Tabla
@@ -89,7 +101,7 @@ public class Ejer5 extends Application{
 		table.getColumns().addAll(colNombre, colApellido, colEdad);
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		
-		root.add(table, 0,0,3,3);
+		root.add(table, 0,1,1,1);
 		
 		//Añadir icono
 		Image imagen = new Image(getClass().getResource("/picture/agenda.png").toString());
@@ -98,17 +110,26 @@ public class Ejer5 extends Application{
 		//Hace que la tabla crezca
 		ColumnConstraints cc1 = new ColumnConstraints();
 		RowConstraints rc1 = new RowConstraints();
+		RowConstraints rc2 = new RowConstraints();
 		cc1.setHgrow(Priority.ALWAYS);
-		rc1.setVgrow(Priority.ALWAYS);
+		rc2.setVgrow(Priority.ALWAYS);
 		root.getColumnConstraints().add(cc1);
-		root.getRowConstraints().add(rc1);
+		root.getRowConstraints().addAll(rc1,rc2);
 		
 		
 		//Metemos los botones en un flow pane
-		FlowPane flow = new FlowPane(5,5);
-		flow.setAlignment(Pos.CENTER);
-		flow.getChildren().addAll(btnAgregar, btnModificar, btnEliminar);
-		root.add(flow, 0, 4, 1, 1);
+		FlowPane flow1 = new FlowPane(5,5);
+		flow1.setAlignment(Pos.CENTER);
+		flow1.getChildren().addAll(btnAgregar, btnModificar, btnEliminar);
+		root.add(flow1, 0, 2, 1, 1);
+		
+		//Metemos los botones en un flow pane
+		FlowPane flow2 = new FlowPane(15,15);
+		flow2.setPadding(new Insets(15));
+		flow2.setAlignment(Pos.CENTER);
+		flow2.getChildren().addAll(lbFiltrar, txtFiltrar, btnImportar,btnExportar);
+		root.add(flow2, 0, 0, 1, 1);
+		
 		
 		
 		//Mostrar escena

@@ -39,7 +39,7 @@ public class Ejer3 extends Application{
 	private TableColumn<Persona, String> colEdad;
 	private Button btnAgregar, btnModificar, btnEliminar;
 	private TableViewSelectionModel<Persona> tsm;
-	private int posicion = -1;
+	private int posicion;
 	
 	
 	public void start (Stage stage) {
@@ -199,8 +199,6 @@ public class Ejer3 extends Application{
 						
 						//Si todo esta bien se lo notificamos al usuario
 						personas.set(posicion,p);
-//						Persona p = table.getSelectionModel().getSelectedItem();
-//						p.setNombre(txtNombre.getText());
 						Alert alert = new Alert(Alert.AlertType.INFORMATION);
 						alert.initOwner(this.btnAgregar.getScene().getWindow());
 						alert.setHeaderText(null);
@@ -208,7 +206,6 @@ public class Ejer3 extends Application{
 						alert.setContentText("Persona modificada correctamente");
 						alert.showAndWait();
 						clearFields();
-//						posicion = -1;
 					}
 				}	
 			}
