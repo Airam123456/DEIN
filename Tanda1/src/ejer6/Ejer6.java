@@ -1,5 +1,8 @@
 package ejer6;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 
 import javafx.application.Application;
@@ -28,6 +31,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -86,7 +90,7 @@ public class Ejer6 extends Application{
 		
 		//Boton exportar
 		btnExportar = new Button("Exportar");
-		btnExportar.setOnAction(e -> exportar());
+		btnExportar.setOnAction(e -> exportar(stage));
 		
 		//Lista de personas
 		personas = FXCollections.observableArrayList();
@@ -188,8 +192,25 @@ public class Ejer6 extends Application{
 
 	}
 	
-	private void exportar() {
+	private void exportar(Stage stage) {
+		FileChooser FC = new FileChooser();
+		File file = FC.showSaveDialog(stage);
 		
+		
+		try {
+			PrintWriter pw = new PrintWriter(file);
+			String str="Nombre,Apellido,Edad \n";
+			for (int i = 0; i < table.getItems().size(); i++) {
+				System.out.println(table.getItems().get(i).getNombre());
+				str += table.getItems().get(i).getNombre() + "," + table.getItems().get(i).getApellido() + "," + table.getItems().get(i).getEdad() + "\n";
+				
+			}
+			pw.write(str);
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -371,20 +392,9 @@ public class Ejer6 extends Application{
 	}
 	
 	public void eliminar() {
-        tsm = table.getSelectionModel();
-   
-        // Get all selected row indices in an array
-        ObservableList<Integer> list = tsm.getSelectedIndices();
-        Integer[] selectedIndices = new Integer[list.size()];
-        selectedIndices = list.toArray(selectedIndices);
-
-        // Sort the array
-        Arrays.sort(selectedIndices);
-        // Delete rows (last to first)
-        for(int i = selectedIndices.length - 1; i >= 0; i--) {
-            tsm.clearSelection(selectedIndices[i].intValue());
-            table.getItems().remove(selectedIndices[i].intValue());
-        }
+		Persona p = table.getSelectionModel().getSelectedItem();
+		personas.remove(p);
+		
         
         clearFields();
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
