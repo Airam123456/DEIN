@@ -1,8 +1,12 @@
+/binding/
+/collections/
+/container/
 /control/
 /event/
 /image/
 /intro/
 /model/
+/module-info.class
 /node/
 /scene/
 /shape/
