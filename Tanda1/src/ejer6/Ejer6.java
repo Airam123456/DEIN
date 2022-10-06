@@ -395,7 +395,6 @@ public class Ejer6 extends Application{
 		Persona p = table.getSelectionModel().getSelectedItem();
 		personas.remove(p);
 		
-        
         clearFields();
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.initOwner(this.btnEliminar.getScene().getWindow());
