@@ -19,7 +19,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import model.Persona;
 
-public class AgregrarPersonaEjerGController {
+public class AgregrarPersonaEjerHController {
 	@FXML
 	private Label lbNombre;
 	@FXML

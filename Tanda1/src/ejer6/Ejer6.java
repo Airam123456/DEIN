@@ -1,6 +1,9 @@
 package ejer6;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -35,6 +38,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.stage.FileChooser.ExtensionFilter;
 import model.Persona;
 
 public class Ejer6 extends Application{
@@ -86,7 +90,7 @@ public class Ejer6 extends Application{
 		
 		//Boton importar
 		btnImportar =  new Button("Importar");
-		btnImportar.setOnAction(e -> importar());
+		btnImportar.setOnAction(e -> importar(stage));
 		
 		//Boton exportar
 		btnExportar = new Button("Exportar");
@@ -187,31 +191,61 @@ public class Ejer6 extends Application{
 		
 				
 	}	
-	private void importar() {
+	private void importar(Stage stage) {
 		
-
-	}
-	
-	private void exportar(Stage stage) {
-		FileChooser FC = new FileChooser();
-		File file = FC.showSaveDialog(stage);
-		
+		FileChooser fileDialog = new FileChooser();
+		fileDialog.setTitle("Open CSV");
+		fileDialog.setInitialDirectory(new File("/home/dm2/Escritorio"));
+		fileDialog.getExtensionFilters().add(new ExtensionFilter("Archivo CSV", "*.csv", "*.csv"));
+		fileDialog.setSelectedExtensionFilter(fileDialog.getExtensionFilters().get(0));
+		File archivo = fileDialog.showOpenDialog(stage);
 		
 		try {
-			PrintWriter pw = new PrintWriter(file);
-			String str="Nombre,Apellido,Edad \n";
-			for (int i = 0; i < table.getItems().size(); i++) {
-				System.out.println(table.getItems().get(i).getNombre());
-				str += table.getItems().get(i).getNombre() + "," + table.getItems().get(i).getApellido() + "," + table.getItems().get(i).getEdad() + "\n";
-				
+			BufferedReader buffer = new BufferedReader(new FileReader(archivo));
+			int fila = 0;
+			String linea = buffer.readLine();
+			while(linea != null) {
+				if(fila != 0) {
+					String[] partes = linea.split(",");
+					Persona p = new Persona(partes[0],partes[1],Integer.parseInt(partes[2]));
+					personas.add(p);
+				}
+				fila++;
+				linea = buffer.readLine();
 			}
-			pw.write(str);
-			pw.close();
+			buffer.close();
+			table.refresh();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+	}
+	
+	private void exportar(Stage stage) {
 		
+		FileChooser fileDialog = new FileChooser();
+		fileDialog.setInitialDirectory(new File("/home/dm2/Escritorio"));
+		fileDialog.setInitialFileName(".csv");
+		File archivo = fileDialog.showSaveDialog(stage);
+		
+		try {
+			PrintWriter write = new PrintWriter(archivo);
+			String datos = "Nombre,Apellido,Edad \n";
+			for (int i = 0; i < table.getItems().size(); i++) {
+				datos += table.getItems().get(i).getNombre() + "," + table.getItems().get(i).getApellido() + "," + table.getItems().get(i).getEdad() + "\n";
+				
+			}
+			write.write(datos);
+			write.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void nuevaVentana(TableView<Persona> table, String tipo) {
@@ -394,8 +428,7 @@ public class Ejer6 extends Application{
 	public void eliminar() {
 		Persona p = table.getSelectionModel().getSelectedItem();
 		personas.remove(p);
-		
-        clearFields();
+	
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.initOwner(this.btnEliminar.getScene().getWindow());
 		alert.setHeaderText(null);
