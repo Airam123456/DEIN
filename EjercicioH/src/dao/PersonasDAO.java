@@ -12,31 +12,31 @@ import javafx.collections.ObservableList;
 import model.Persona;
 
 public class PersonasDAO {
-	
-	public PersonasDAO() {
-	}
+	private ConexionDB conexion;
 
-	public ArrayList<Persona> getPersonas() {
+	public ArrayList<Persona> getPersonas() throws SQLException {
 		String sql = "SELECT * FROM Persona;";
 		PreparedStatement ps;
 		ArrayList<Persona> personas = new ArrayList<Persona>();
-		try {
-			ps = ConexionDB.getConexion().prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				personas.add(new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellidos"), rs.getInt("edad")));
-			}			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	
+		conexion = new ConexionDB();
+		Connection conn = conexion.getConexion();
+
+		ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			personas.add(
+					new Persona(rs.getInt("id"), rs.getString("nombre"), rs.getString("apellidos"), rs.getInt("edad")));
+		}
+
 		return personas;
 	}
 
 	public void insertPersona(Persona p) {
 		String sql = "INSERT INTO Persona (nombre, apellidos, edad) VALUES (?, ?, ?)";
 		PreparedStatement ps;
+		Connection conn = conexion.getConexion();
 		try {
-			ps = ConexionDB.getConexion().prepareStatement(sql);
+			ps =conn.prepareStatement(sql);
 			ps.setString(1, p.getNombre());
 			ps.setString(2, p.getApellido());
 			ps.setInt(3, p.getEdad());
@@ -50,8 +50,9 @@ public class PersonasDAO {
 	public void updatePersona(Persona p) {
 		String sql = "UPDATE Persona set nombre=?, apellidos=?, edad=? WHERE id = ?";
 		PreparedStatement ps;
+		Connection conn = conexion.getConexion();
 		try {
-			ps = ConexionDB.getConexion().prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, p.getNombre());
 			ps.setString(2, p.getApellido());
 			ps.setInt(3, p.getEdad());
@@ -66,8 +67,9 @@ public class PersonasDAO {
 	public void deletePersona(Persona p) {
 		String sql = "DELETE FROM Persona WHERE id = ?";
 		PreparedStatement ps;
+		Connection conn = conexion.getConexion();
 		try {
-			ps = ConexionDB.getConexion().prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setInt(1, p.getId());
 			ps.executeUpdate();
 		} catch (SQLException e) {
