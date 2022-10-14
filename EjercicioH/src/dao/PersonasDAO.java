@@ -38,7 +38,7 @@ public class PersonasDAO {
 		try {
 			ps = ConexionDB.getConexion().prepareStatement(sql);
 			ps.setString(1, p.getNombre());
-			ps.setString(2, p.getApellidos());
+			ps.setString(2, p.getApellido());
 			ps.setInt(3, p.getEdad());
 			ps.executeUpdate();
 		} catch (SQLException e) {
@@ -53,7 +53,7 @@ public class PersonasDAO {
 		try {
 			ps = ConexionDB.getConexion().prepareStatement(sql);
 			ps.setString(1, p.getNombre());
-			ps.setString(2, p.getApellidos());
+			ps.setString(2, p.getApellido());
 			ps.setInt(3, p.getEdad());
 			ps.setInt(4, p.getId());
 			ps.executeUpdate();

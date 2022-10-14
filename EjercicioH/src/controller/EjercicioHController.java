@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import dao.PersonasDAO;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -72,6 +73,8 @@ public class EjercicioHController implements Initializable{
 	private Persona p;
 	
 	private int posicion;
+	
+	private PersonasDAO dao;
 	
 	
 	
@@ -278,6 +281,9 @@ public class EjercicioHController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		personas = FXCollections.observableArrayList();
+		dao = new PersonasDAO();
+		
+		
 		table.setItems(personas);
 		colNombre.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
 		colApellido.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));
