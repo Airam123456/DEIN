@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1052.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AeropuertoController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="212.0" minHeight="0.0" prefHeight="84.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="334.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="353.0" minHeight="10.0" prefHeight="353.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <MenuBar GridPane.columnSpan="2" GridPane.valignment="TOP">
+        <menus>
+          <Menu fx:id="menuAeropuertos" mnemonicParsing="false" text="Aeropuertos">
+            <items>
+              <MenuItem fx:id="menuAeroAniadir" mnemonicParsing="false" onAction="#aeroAniadir" text="Añadir" />
+              <MenuItem fx:id="menuAeroEditar" mnemonicParsing="false" onAction="#aeroEditar" text="Editar" />
+              <MenuItem fx:id="menuAeroBorrar" mnemonicParsing="false" onAction="#aeroBorrar" text="Borrar" />
+              <MenuItem fx:id="menuAeroInfo" mnemonicParsing="false" onAction="#aeroInfo" text="Mostrar Informacion" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuAviones" mnemonicParsing="false" text="Aviones">
+            <items>
+              <MenuItem fx:id="menuAvionAniadir" mnemonicParsing="false" onAction="#avionAniadir" text="Añadir" />
+              <MenuItem fx:id="menuAvionActivar" mnemonicParsing="false" onAction="#avionActivar" text="Activar/Desactivar" />
+              <MenuItem fx:id="menuAvionBorrar" mnemonicParsing="false" onAction="#avionBorrar" text="Borrar" />
+            </items>
+          </Menu>
+            <Menu fx:id="menuAyuda" mnemonicParsing="false" text="Ayuda" />
+        </menus>
+      </MenuBar>
+      <Label text="LISTADO DE AEROPUERTOS" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <padding>
+            <Insets top="15.0" />
+         </padding>
+      </Label>
+      <FlowPane alignment="CENTER_LEFT" hgap="25.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <RadioButton fx:id="radPublicos" mnemonicParsing="false" text="Publicos">
+               <toggleGroup>
+                  <ToggleGroup fx:id="group1" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="radPrivados" mnemonicParsing="false" text="Privados" toggleGroup="$group1" />
+         </children>
+         <GridPane.margin>
+            <Insets left="50.0" />
+         </GridPane.margin>
+      </FlowPane>
+      <FlowPane alignment="CENTER_RIGHT" hgap="5.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label text="Nombre: " />
+            <TextField fx:id="txtFiltrar" prefHeight="24.0" prefWidth="311.0" />
+         </children>
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
+      </FlowPane>
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="41.0" text="ID" />
+          <TableColumn fx:id="colNombre" prefWidth="145.0" text="Nombre" />
+          <TableColumn fx:id="colPais" minWidth="0.0" prefWidth="127.0" text="Pais" />
+          <TableColumn fx:id="colCiudad" prefWidth="167.0" text="Ciudad" />
+          <TableColumn fx:id="colCalle" prefWidth="147.0" text="Calle" />
+          <TableColumn fx:id="colNumero" prefWidth="57.0" text="Numero" />
+          <TableColumn fx:id="colAnio" prefWidth="79.0" text="Año" />
+          <TableColumn fx:id="colCapacidad" prefWidth="163.0" text="Capacidad" />
+          <TableColumn fx:id="colSocios" prefWidth="125.0" text="NºSocios" />
+        </columns>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </TableView>
+   </children>
+</GridPane>

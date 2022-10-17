@@ -12,22 +12,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/dm2/Escritorio/DEIN/1LIBRERIAS/componentes/ikonli-core-12.3.1.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/dm2/Escritorio/DEIN/1LIBRERIAS/componentes/ikonli-fontawesome5-pack-12.3.1.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/dm2/Escritorio/DEIN/1LIBRERIAS/componentes/ikonli-javafx-12.3.1.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/dm2/Escritorio/DEIN/1LIBRERIAS/componentes/jfoenix-9.0.10.jar">
+	<classpathentry kind="lib" path="/home/dm2/Escritorio/DEIN/1LIBRERIAS/bbdd/mysql-connector-java-8.0.19.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
