@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 
 import javafx.event.ActionEvent;
 
+import javafx.scene.control.Label;
+
 import javafx.scene.control.RadioButton;
 
 public class AniadirAeropuertoController {
@@ -19,6 +21,10 @@ public class AniadirAeropuertoController {
 	private ToggleGroup group1;
 	@FXML
 	private RadioButton rbtnPrivado;
+	@FXML
+	private Label lblFinanciacion;
+	@FXML
+	private Label lblTrabajadores;
 	@FXML
 	private Button btnGuardar;
 	@FXML
@@ -41,6 +47,10 @@ public class AniadirAeropuertoController {
 	private TextField txtFinanciacion;
 	@FXML
 	private TextField txtTrabajadores;
+	@FXML
+	private Label lblSocios;
+	@FXML
+	private TextField txtSocios;
 
 	// Event Listener on Button[#btnGuardar].onAction
 	@FXML
