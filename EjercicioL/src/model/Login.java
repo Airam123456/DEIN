@@ -7,7 +7,6 @@ public class Login {
 	
 	
 	public Login(String usuario, String password) {
-		super();
 		this.usuario = usuario;
 		this.password = password;
 	}
@@ -32,4 +31,11 @@ public class Login {
 		this.password = password;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Login [usuario=" + usuario + ", password=" + password + "]";
+	}
+
+	
 }

@@ -12,23 +12,28 @@ public class LoginDAO {
 
 	private ConexionDB conexion;
 
-	public boolean validarLogin(Login log) throws SQLException {
+	public boolean validarLogin(Login login) throws SQLException {
 
-		String sql = "Select * from usuarios where usuario = '" + log.getUsuario() + "' and password = '" + log.getPassword() + "'";
+		String sql = "Select password from aeropuertos.usuarios where usuario = '" + login.getUsuario() + "'";
+
 		PreparedStatement ps;
-		
 		conexion = new ConexionDB();
 		Connection conn = conexion.getConexion();
-		
-			ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+		ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			if (rs.getString("password").equals(login.getPassword())) {
+				rs.close();
+				ps.close();
+				conn.close();
 				return true;
 			}
-			return false;
-			
-		
-		
+		}
+		rs.close();
+		ps.close();
+		conn.close();
+		return false;
+
 	}
 
 }
