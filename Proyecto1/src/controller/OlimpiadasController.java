@@ -3,6 +3,12 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+
+import java.util.ArrayList;
+
+import javax.swing.DefaultComboBoxModel;
+
+import dao.OlimpiadasDAO;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -20,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import model.Olimpiada;
 import javafx.scene.control.Menu;
 
 public class OlimpiadasController {
@@ -61,6 +68,27 @@ public class OlimpiadasController {
 	private Button borrarEvento;
 	@FXML
 	private Button verParticipaciones;
+	private OlimpiadasDAO cOlimpiada;
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// Event Listener on MenuItem[#aniadirDeportista].onAction
 	@FXML
