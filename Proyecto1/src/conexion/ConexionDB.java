@@ -12,32 +12,32 @@ public class ConexionDB {
 
 	private Connection conexion;
 
-//	public ConexionDB() throws SQLException {
-//
-//		String user = "admin";
-//
-//		String password = "password";
-//
-//		String url = "jdbc:mysql://localhost/personas?serverTimezone=Europe/Madrid";
-//
-//		conexion = DriverManager.getConnection(url, user, password);
-//
-//		conexion.setAutoCommit(true);
-//
-//	}
+	public ConexionDB() throws SQLException {
+
+		String user = "admin";
+
+		String password = "password";
+
+		String url = "jdbc:mysql://localhost/olimpiadas?serverTimezone=Europe/Madrid";
+
+		conexion = DriverManager.getConnection(url, user, password);
+
+		conexion.setAutoCommit(true);
+
+	}
 
 	public Connection getConexion() throws SQLException {
 
 		//return conexion;
 		
-		
-		String url = Propiedades.getValor("url");
-	    String user = Propiedades.getValor("user");
-	    String password = Propiedades.getValor("password");
-		conexion = DriverManager.getConnection(url, user, password);
-
-		conexion.setAutoCommit(true);
-		
+//		
+//		String url = Propiedades.getValor("url");
+//	    String user = Propiedades.getValor("user");
+//	    String password = Propiedades.getValor("password");
+//		conexion = DriverManager.getConnection(url, user, password);
+//
+//		conexion.setAutoCommit(true);
+//		
 		return conexion;
 
 	}

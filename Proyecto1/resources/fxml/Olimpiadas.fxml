@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -86,11 +88,9 @@
 			</font>
 		</Label>
 		<ComboBox fx:id="cboxOlimpiadas" onAction="#selectOlimpiadas"
-			prefHeight="24.0" prefWidth="405.0" GridPane.columnSpan="2"
-			GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-		<Button fx:id="switchEstacion" mnemonicParsing="false"
-			text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER"
-			GridPane.valignment="BOTTOM" />
+			prefHeight="24.0" prefWidth="405.0" promptText="Elige Olimpiada"
+			GridPane.columnSpan="2" GridPane.halignment="CENTER"
+			GridPane.rowIndex="1" />
 		<FlowPane alignment="CENTER" hgap="15.0" prefHeight="200.0"
 			prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
 			<children>
@@ -130,5 +130,18 @@
 			onAction="#verParticipaciones" text="Ver Participaciones"
 			GridPane.columnIndex="2" GridPane.halignment="CENTER"
 			GridPane.rowIndex="4" GridPane.valignment="TOP" />
+		<FlowPane alignment="BOTTOM_CENTER" hgap="20.0"
+			prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+			<children>
+				<RadioButton fx:id="rbtnVerano" mnemonicParsing="false"
+					selected="true" text="Verano">
+					<toggleGroup>
+						<ToggleGroup fx:id="estacion" />
+					</toggleGroup>
+				</RadioButton>
+				<RadioButton fx:id="rbtnInvierno"
+					mnemonicParsing="false" text="Invierno" toggleGroup="$estacion" />
+			</children>
+		</FlowPane>
 	</children>
 </GridPane>

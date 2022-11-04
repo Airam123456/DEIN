@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,9 +13,9 @@ public class OlimpiadasDAO {
 	
 	private ConexionDB conexion;
 	
-	public OlimpiadasDAO () throws SQLException {
-		conexion = new ConexionDB();
-	}
+//	public OlimpiadasDAO () throws SQLException {
+//		conexion = new ConexionDB();
+//	}
 	
 	public ArrayList <Olimpiada> selectOlimpiadas() {
 		PreparedStatement ps;
@@ -68,5 +69,26 @@ public class OlimpiadasDAO {
 		
 		return lstOlimpiadas;
 	}
+	
+	
+	public void insertOlimpiada(Olimpiada olimpiada) {
+		String sql = "insert into Olimpiada (nombre, anio, temporada, ciudad) values (?,?,?,?)";
+		PreparedStatement ps;
+		Connection conn;
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, olimpiada.getNombre());
+			ps.setInt(2, olimpiada.getAnio());
+			ps.setString(3, olimpiada.getTemporada());
+			ps.setString(4, olimpiada.getCiudad());
+			ps.executeUpdate();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+	}
+	
 
 }
