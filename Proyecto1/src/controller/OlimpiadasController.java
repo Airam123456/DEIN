@@ -224,24 +224,24 @@ public class OlimpiadasController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 
-		olimpiadas = FXCollections.observableArrayList();
-
-		try {
-			cargarOlimpiada = new OlimpiadasDAO();
-
-			if(rbtnVerano.isSelected()) {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
-			}
-			else {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
-			}
-
-			cboxOlimpiadas.setItems(olimpiadas);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		olimpiadas = FXCollections.observableArrayList();
+//
+//		try {
+//			cargarOlimpiada = new OlimpiadasDAO();
+//
+//			if(rbtnVerano.isSelected()) {
+//				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
+//			}
+//			else {
+//				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
+//			}
+//
+//			cboxOlimpiadas.setItems(olimpiadas);
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 
