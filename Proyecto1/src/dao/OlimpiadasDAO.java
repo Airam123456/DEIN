@@ -13,9 +13,9 @@ public class OlimpiadasDAO {
 	
 	private ConexionDB conexion;
 	
-//	public OlimpiadasDAO () throws SQLException {
-//		conexion = new ConexionDB();
-//	}
+	public OlimpiadasDAO () throws SQLException {
+		conexion = new ConexionDB();
+	}
 	
 	public ArrayList <Olimpiada> selectOlimpiadas() {
 		PreparedStatement ps;
@@ -70,7 +70,6 @@ public class OlimpiadasDAO {
 		return lstOlimpiadas;
 	}
 	
-	
 	public void insertOlimpiada(Olimpiada olimpiada) {
 		String sql = "insert into Olimpiada (nombre, anio, temporada, ciudad) values (?,?,?,?)";
 		PreparedStatement ps;
@@ -89,6 +88,5 @@ public class OlimpiadasDAO {
 		}
 
 	}
-	
 
 }

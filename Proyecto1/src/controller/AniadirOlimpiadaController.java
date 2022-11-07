@@ -42,13 +42,14 @@ public class AniadirOlimpiadaController {
 		LocalDate current_date;
 		current_date = LocalDate.now();
 		int current_Year = current_date.getYear();		
-				
-				
+		
+		int id = 0;
+		String temporada;
 		String ciudad = txtCiudad.getText();
 		int anio = 0;
 		String error = "";
-		String temporada;
-		int id = 0;
+		
+		
 		
 		if(rbtnVerano.isSelected())
 			temporada = "Summer";
@@ -68,10 +69,17 @@ public class AniadirOlimpiadaController {
 			error += "\n La Fecha tiene que ser un entero";
 		}
 		
-		String nombre = "\"" + anio + " " + temporada + "\"";
+		String nombre = anio + " " + temporada;
 		
 		if(error.equals("")) {
 			o = new Olimpiada(id, nombre, anio, temporada, ciudad);
+			
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.initOwner(this.btnAceptar.getScene().getWindow());
+			alert.setHeaderText(null);
+			alert.setTitle("Info");
+			alert.setContentText("Olimpiada agregada correctamente");
+			alert.showAndWait();
 
 			Stage myStage =(Stage) this.btnCancelar.getScene().getWindow();
 			myStage.close();

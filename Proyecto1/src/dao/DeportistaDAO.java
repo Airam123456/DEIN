@@ -56,4 +56,42 @@ public class DeportistaDAO {
 		return deportista;
 	}
 	
+	public void insertDeportista (Deportista deportista) {
+		String sql = "insert into Deportista (nombre, sexo, peso, altura) values (?,?,?,?)";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deportista.getNombre());
+			ps.setString(2, deportista.getSexo());
+			ps.setInt(3, deportista.getPeso());
+			ps.setInt(4, deportista.getAltura());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean existeDeportista (Deportista deportista) {
+		String sql = "select * from Deportista where nombre = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deportista.getNombre());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			return true;
+		}
+		return false;
+	}
+	
 }

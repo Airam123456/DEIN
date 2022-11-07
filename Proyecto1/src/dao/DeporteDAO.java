@@ -51,7 +51,39 @@ public class DeporteDAO {
 		return deporte;
 	}
 	
+	public void insertDeporte (Deporte deporte) {
+		String sql = "insert into Deporte (nombre) values (?)";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deporte.getNombre());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
-	
+	public boolean existeDeporte (Deporte deporte) {
+		String sql = "select * from Deporte where nombre = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deporte.getNombre());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			return true;
+		}
+		return false;
+	}
 
 }
