@@ -10,66 +10,69 @@ import conexion.ConexionDB;
 import model.Olimpiada;
 
 public class OlimpiadasDAO {
-	
+
 	private ConexionDB conexion;
-	
-	public OlimpiadasDAO () throws SQLException {
+
+	public OlimpiadasDAO() throws SQLException {
 		conexion = new ConexionDB();
 	}
-	
-	public ArrayList <Olimpiada> selectOlimpiadas() {
+
+	public ArrayList<Olimpiada> selectOlimpiadas() {
 		PreparedStatement ps;
-		ArrayList <Olimpiada> lstOlimpiadas= new ArrayList<Olimpiada>();
+		ArrayList<Olimpiada> lstOlimpiadas = new ArrayList<Olimpiada>();
 		try {
-			ps=conexion.getConexion().prepareStatement("select * from Olimpiada");
+			ps = conexion.getConexion().prepareStatement("select * from Olimpiada");
 			ResultSet rs = ps.executeQuery();
-			while  (rs.next()) {
-				lstOlimpiadas.add(new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+			while (rs.next()) {
+				lstOlimpiadas.add(
+						new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return lstOlimpiadas;
 	}
-	
-	public ArrayList <Olimpiada> selectOlimpiadasInvierno (){
+
+	public ArrayList<Olimpiada> selectOlimpiadasInvierno() {
 		PreparedStatement ps;
-		ArrayList <Olimpiada> lstOlimpiadas= new ArrayList<Olimpiada>();
+		ArrayList<Olimpiada> lstOlimpiadas = new ArrayList<Olimpiada>();
 		try {
-			ps=conexion.getConexion().prepareStatement("select * from Olimpiada where temporada = ?");
+			ps = conexion.getConexion().prepareStatement("select * from Olimpiada where temporada = ?");
 			ps.setString(1, "Winter");
 			ResultSet rs = ps.executeQuery();
-			while  (rs.next()) {
-				lstOlimpiadas.add(new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+			while (rs.next()) {
+				lstOlimpiadas.add(
+						new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return lstOlimpiadas;
 	}
-	
-	public ArrayList <Olimpiada> selectOlimpiadasVerano (){
+
+	public ArrayList<Olimpiada> selectOlimpiadasVerano() {
 		PreparedStatement ps;
-		ArrayList <Olimpiada> lstOlimpiadas= new ArrayList<Olimpiada>();
+		ArrayList<Olimpiada> lstOlimpiadas = new ArrayList<Olimpiada>();
 		try {
-			ps=conexion.getConexion().prepareStatement("select * from Olimpiada where temporada = ?");
+			ps = conexion.getConexion().prepareStatement("select * from Olimpiada where temporada = ?");
 			ps.setString(1, "Summer");
 			ResultSet rs = ps.executeQuery();
-			while  (rs.next()) {
-				lstOlimpiadas.add(new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+			while (rs.next()) {
+				lstOlimpiadas.add(
+						new Olimpiada(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return lstOlimpiadas;
 	}
-	
+
 	public void insertOlimpiada(Olimpiada olimpiada) {
 		String sql = "insert into Olimpiada (nombre, anio, temporada, ciudad) values (?,?,?,?)";
 		PreparedStatement ps;
@@ -87,6 +90,26 @@ public class OlimpiadasDAO {
 			e1.printStackTrace();
 		}
 
+	}
+
+	public boolean existeOlimpiada(Olimpiada olimp) {
+		String sql = "select * from Olimpiada where anio = ? and ciudad = ? and temporada = ?";
+		PreparedStatement ps;
+		Connection conn;
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, olimp.getAnio());
+			ps.setString(2, olimp.getCiudad());
+			ps.setString(3, olimp.getTemporada());
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			return true;
+		}
+		return false;
 	}
 
 }

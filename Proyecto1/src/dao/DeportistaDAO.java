@@ -94,4 +94,24 @@ public class DeportistaDAO {
 		return false;
 	}
 	
+	public void updateDeportista (Deportista deportista) {
+		String sql = "update Deportista set nombre = ?, sexo= ?, peso = ?, altura = ? where id_deportista = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deportista.getNombre());
+			ps.setString(2, deportista.getSexo());
+			ps.setInt(3, deportista.getPeso());
+			ps.setInt(4, deportista.getAltura());
+			ps.setInt(5, deportista.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

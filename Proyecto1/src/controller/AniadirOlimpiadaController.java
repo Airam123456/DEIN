@@ -10,8 +10,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import model.Olimpiada;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
+import dao.DeportistaDAO;
+import dao.OlimpiadasDAO;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.RadioButton;
@@ -33,6 +36,7 @@ public class AniadirOlimpiadaController {
 	private RadioButton rbtnInvierno;
 	
 	private Olimpiada o;
+	private OlimpiadasDAO existe;
 	
 
 	// Event Listener on Button[#btnAceptar].onAction
@@ -71,8 +75,20 @@ public class AniadirOlimpiadaController {
 		
 		String nombre = anio + " " + temporada;
 		
+		o = new Olimpiada(id, nombre, anio, temporada, ciudad);
+		
+		try {
+			existe = new OlimpiadasDAO();
+			if(existe.existeOlimpiada(o) == true)
+				error += "\n Olimpiada ya existente";
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		if(error.equals("")) {
-			o = new Olimpiada(id, nombre, anio, temporada, ciudad);
 			
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.initOwner(this.btnAceptar.getScene().getWindow());
