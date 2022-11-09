@@ -114,4 +114,22 @@ public class DeportistaDAO {
 		}
 	}
 	
+	public boolean deleteDeportista (Deportista deportista){
+		String sql = "delete from Deportista where id_deportista = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, deportista.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+	
 }

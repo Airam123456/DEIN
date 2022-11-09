@@ -93,15 +93,21 @@ public class AniadirDeportistaController {
 		
 		if(error.equals("")) {
 			
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.initOwner(this.btnAceptar.getScene().getWindow());
-			alert.setHeaderText(null);
-			alert.setTitle("Info");
-			alert.setContentText("Deportista agregada correctamente");
-			alert.showAndWait();
+			try {
+				existe.insertDeportista(d);
+				
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.initOwner(this.btnAceptar.getScene().getWindow());
+				alert.setHeaderText(null);
+				alert.setTitle("Info");
+				alert.setContentText("Deportista agregada correctamente");
+				alert.showAndWait();
 
-			Stage myStage =(Stage) this.btnCancelar.getScene().getWindow();
-			myStage.close();
+				Stage myStage =(Stage) this.btnCancelar.getScene().getWindow();
+				myStage.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
 		else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);

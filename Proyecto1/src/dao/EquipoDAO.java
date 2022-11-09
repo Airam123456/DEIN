@@ -107,5 +107,40 @@ public class EquipoDAO {
 		}
 		return false;
 	}
+	
+	public void updateEquipo (Equipo equipo) {
+		String sql = "update Equipo set nombre = ?, iniciales = ? where id_equipo = ?";
+		PreparedStatement ps;
+		Connection conn;
+
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, equipo.getNombre());
+			ps.setString(2, equipo.getIniciales());
+			ps.setInt(3, equipo.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean deleteEquipo (Equipo equipo){
+		String sql = "delete from Equipo where id_Equipo = ?";
+		PreparedStatement ps;
+		Connection conn;
+
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, equipo.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
+	}
+	
 
 }

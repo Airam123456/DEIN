@@ -85,5 +85,38 @@ public class DeporteDAO {
 		}
 		return false;
 	}
+	
+	public void updateDeporte (Deporte deporte) {
+		String sql = "update Deporte set nombre = ? where id_deporte = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, deporte.getNombre());
+			ps.setInt(2, deporte.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean deleteDeporte (Deporte deporte) {
+		String sql = "delete from Deporte where id_deporte = ?";
+		PreparedStatement ps;
+		Connection conn;
+		
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, deporte.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
+	}
 
 }

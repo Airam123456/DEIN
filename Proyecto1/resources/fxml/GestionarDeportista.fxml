@@ -15,7 +15,7 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0"
-	prefWidth="854.0" xmlns="http://javafx.com/javafx/18"
+	prefWidth="854.0" xmlns="http://javafx.com/javafx/19"
 	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="controller.GestionarDeportistaController">
 	<columnConstraints>
@@ -116,7 +116,7 @@
 				</Button>
 				<Button fx:id="btnBorrar" alignment="TOP_CENTER"
 					layoutX="385.0" layoutY="33.0" mnemonicParsing="false"
-					onAction="#borrar" text="Aceptar">
+					onAction="#borrar" text="Borrar">
 					<font>
 						<Font size="15.0" />
 					</font>
@@ -142,8 +142,9 @@
 					mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
 			</children>
 		</FlowPane>
-		<ListView fx:id="listDeportistas" prefHeight="200.0"
-			prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="4">
+		<ListView fx:id="listDeportistas"
+			onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0"
+			GridPane.rowIndex="1" GridPane.rowSpan="4">
 			<GridPane.margin>
 				<Insets left="25.0" />
 			</GridPane.margin>

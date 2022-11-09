@@ -19,6 +19,11 @@ public class Deportista {
 	public Deportista() {
 		super();
 	}
+	
+	public Deportista(int id) {
+		super();
+		this.id = id;
+	}
 
 	public int getId() {
 		return id;
@@ -42,7 +47,7 @@ public class Deportista {
 	@Override
 	public String toString() {
 		
-		return nombre;
+		return nombre + "; Peso: " + peso + "Kg, Altura: " + altura + "cm";
 	}
 	
 

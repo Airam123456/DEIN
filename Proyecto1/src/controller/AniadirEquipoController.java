@@ -46,7 +46,7 @@ public class AniadirEquipoController {
 			error += "\n El campo Iniciales no puede estar vacio";
 		}
 		
-		eq = new Equipo(id, nombre, iniciales);
+		eq = new Equipo(id, nombre, iniciales.toUpperCase());
 		
 		try {
 			existe = new EquipoDAO();
@@ -59,16 +59,22 @@ public class AniadirEquipoController {
 		}
 		
 		if (error.equals("")) {
+			
+			try {
+				existe.insertEquipo(eq);
 
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.initOwner(this.btnAceptar.getScene().getWindow());
-			alert.setHeaderText(null);
-			alert.setTitle("Info");
-			alert.setContentText("Equipo agregado correctamente");
-			alert.showAndWait();
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.initOwner(this.btnAceptar.getScene().getWindow());
+				alert.setHeaderText(null);
+				alert.setTitle("Info");
+				alert.setContentText("Equipo agregado correctamente");
+				alert.showAndWait();
 
-			Stage myStage = (Stage) this.btnCancelar.getScene().getWindow();
-			myStage.close();
+				Stage myStage = (Stage) this.btnCancelar.getScene().getWindow();
+				myStage.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
