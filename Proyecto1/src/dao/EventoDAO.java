@@ -60,7 +60,43 @@ public class EventoDAO {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			
 		}
+	}
+
+	public void updateEvento(Evento evento) {
+		String sql = "update Evento set nombre = ?, id_olimpiada = ?, id_deporte = ? where id_evento = ?";
+		PreparedStatement ps;
+		Connection conn;
+
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, evento.getNombre());
+			ps.setInt(2, evento.getOlimpiada().getId());
+			ps.setInt(3, evento.getDeporte().getId());
+			ps.setInt(4, evento.getId_evento());
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public boolean deleteEvento(Evento evento) {
+		String sql = "Delete from Evento where id_evento = ?";
+		PreparedStatement ps;
+		Connection conn;
+
+		try {
+			conn = conexion.getConexion();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, evento.getId_evento());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			return false;
+		}
+		return true;
 	}
 
 }

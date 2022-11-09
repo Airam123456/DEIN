@@ -18,7 +18,7 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0"
-	prefWidth="891.0" xmlns="http://javafx.com/javafx/18"
+	prefWidth="891.0" xmlns="http://javafx.com/javafx/19"
 	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="controller.OlimpiadasController">
 	<columnConstraints>
@@ -134,13 +134,14 @@
 			prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
 			<children>
 				<RadioButton fx:id="rbtnVerano" mnemonicParsing="false"
-					selected="true" text="Verano">
+					onAction="#verano" selected="true" text="Verano">
 					<toggleGroup>
 						<ToggleGroup fx:id="estacion" />
 					</toggleGroup>
 				</RadioButton>
 				<RadioButton fx:id="rbtnInvierno"
-					mnemonicParsing="false" text="Invierno" toggleGroup="$estacion" />
+					mnemonicParsing="false" onAction="#invierno" text="Invierno"
+					toggleGroup="$estacion" />
 			</children>
 		</FlowPane>
 	</children>
