@@ -54,5 +54,30 @@ public class ParticipacionDAO {
 		return participaciones;
 	}
 	
+	public void insertParticipacion(Participacion part)throws SQLException {
+		PreparedStatement ps;
+		
+		ps = conexion.getConexion().prepareStatement("insert into Participacion values (?,?,?,?,?)");
+		ps.setInt(1, part.getDeportista().getId());
+		ps.setInt(2, part.getEvento().getId_evento());
+		ps.setInt(3, part.getEquipo().getId());
+		ps.setInt(4, part.getEdad());
+		
+		if(part.getMedalla().equals("Sin medalla")) {
+			ps.setInt(5, java.sql.Types.NULL);
+		}
+		if(part.getMedalla().equals("Gold")) {
+			ps.setString(5, "Gold");
+		}
+		if(part.getMedalla().equals("Silver")) {
+			ps.setString(5, "Silver");
+		}
+		if(part.getMedalla().equals("Bronze")) {
+			ps.setString(5, "Bronze");
+		}
+		ps.executeUpdate();
+		
+	}
+	
 	
 }

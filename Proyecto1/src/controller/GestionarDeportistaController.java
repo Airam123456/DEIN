@@ -213,21 +213,11 @@ public class GestionarDeportistaController implements Initializable {
 		System.out.println(genero);
 
 		txtNombre.setText(nombre);
-
-//		if(genero == "F") {
-//			rbtnFemenino.isSelected();
-////			rbtnMasculino.setSelected(false);
-//		}
-//		else {
-//
-////			rbtnFemenino.setSelected(false);
-//		rbtnMasculino.isSelected();
-//		}
 		
-		if(genero == "F")
+		if(genero.equals("F"))
 			rbtnFemenino.setSelected(true);
 		else
-			rbtnFemenino.setSelected(false);
+			rbtnMasculino.setSelected(true);
 		
 
 		txtPeso.setText(Integer.toString(peso));
