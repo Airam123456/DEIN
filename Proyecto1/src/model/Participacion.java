@@ -55,7 +55,7 @@ public class Participacion {
 			str += ". Medalla: Bronce";
 		
 		else
-			str += ". sin medalla";
+			str += ". Sin medalla";
 		
 		return str;
 	}

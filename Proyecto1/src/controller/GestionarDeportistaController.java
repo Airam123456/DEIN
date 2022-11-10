@@ -155,29 +155,38 @@ public class GestionarDeportistaController implements Initializable {
 
 		if (result.get() == ButtonType.OK) {
 			try {
-				cargarDeportistas.deleteDeportista(d);
+				if(cargarDeportistas.deleteDeportista(d)) {
+					deportistas = FXCollections.observableArrayList();
 
-				deportistas = FXCollections.observableArrayList();
+					alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.initOwner(this.btnEditar.getScene().getWindow());
+					alert.setHeaderText(null);
+					alert.setTitle("Info");
+					alert.setContentText("Deportista borrada correctamente");
+					alert.showAndWait();
+					txtNombre.clear();
+					txtPeso.clear();
+					txtAltura.clear();
 
-				alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.initOwner(this.btnEditar.getScene().getWindow());
-				alert.setHeaderText(null);
-				alert.setTitle("Info");
-				alert.setContentText("Deportista borrada correctamente");
-				alert.showAndWait();
-				txtNombre.clear();
-				txtPeso.clear();
-				txtAltura.clear();
+					try {
+						cargarDeportistas = new DeportistaDAO();
+						deportistas.addAll(cargarDeportistas.selectDeportista());
+						listDeportistas.setItems(deportistas);
 
-				try {
-					cargarDeportistas = new DeportistaDAO();
-					deportistas.addAll(cargarDeportistas.selectDeportista());
-					listDeportistas.setItems(deportistas);
-
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
+				else {
+					alert = new Alert(Alert.AlertType.ERROR);
+					alert.setHeaderText(null);
+					alert.setTitle("Error");
+					alert.setContentText("No se puede borrar, existen dependencias");
+					alert.showAndWait();
+				}
+
+
 
 			} catch (Exception e) {
 				// TODO: handle exception

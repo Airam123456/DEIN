@@ -13,90 +13,60 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0"
-	prefWidth="659.0" xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/19"
-	fx:controller="controller.ParticipacionesController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParticipacionesController">
 	<columnConstraints>
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="374.0" minWidth="10.0" prefWidth="353.0" />
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="211.0" minWidth="10.0" prefWidth="98.0" />
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="192.0" minWidth="10.0" prefWidth="230.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="353.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="98.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="230.0" />
 	</columnConstraints>
 	<rowConstraints>
-		<RowConstraints maxHeight="139.0" minHeight="0.0"
-			prefHeight="30.0" vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="279.0" minHeight="10.0"
-			prefHeight="236.0" vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="98.0" minHeight="2.0"
-			prefHeight="26.0" vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="218.0" minHeight="10.0"
-			prefHeight="194.0" vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="62.0" minHeight="10.0"
-			prefHeight="50.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="139.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="279.0" minHeight="10.0" prefHeight="236.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="98.0" minHeight="2.0" prefHeight="26.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="194.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<ListView fx:id="listParticipaciones"
-			onMouseClicked="#selectParticipaciones" prefHeight="200.0"
-			prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+		<ListView fx:id="listParticipaciones" onMouseClicked="#selectParticipaciones" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
 			<GridPane.margin>
 				<Insets bottom="25.0" left="25.0" right="25.0" />
 			</GridPane.margin>
 		</ListView>
-		<Label text="PARTICIPACIONES" GridPane.columnSpan="3"
-			GridPane.halignment="CENTER">
+		<Label text="PARTICIPACIONES" GridPane.columnSpan="3" GridPane.halignment="CENTER">
 			<font>
 				<Font size="20.0" />
 			</font>
 		</Label>
-		<Label text="Deportistas" GridPane.halignment="CENTER"
-			GridPane.rowIndex="2">
+		<Label text="Deportistas" GridPane.halignment="CENTER" GridPane.rowIndex="2">
 			<font>
 				<Font size="16.0" />
 			</font>
 		</Label>
-		<ListView fx:id="listDeportista"
-			onMouseClicked="#selectDeportista" prefHeight="110.0"
-			prefWidth="334.0" GridPane.rowIndex="3">
+		<ListView fx:id="listDeportista" onMouseClicked="#selectDeportista" prefHeight="110.0" prefWidth="334.0" GridPane.rowIndex="3">
 			<GridPane.margin>
 				<Insets left="25.0" />
 			</GridPane.margin>
 		</ListView>
-		<FlowPane alignment="CENTER" hgap="50.0" prefHeight="200.0"
-			prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+		<FlowPane alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
 			<children>
-				<Button fx:id="btnAgregar" mnemonicParsing="false"
-					onAction="#agregar" prefWidth="75.0" text="Agregar" />
-				<Button fx:id="btnEditar" mnemonicParsing="false"
-					onAction="#editar" prefWidth="75.0" text="Editar" />
-				<Button fx:id="btnBorrar" mnemonicParsing="false"
-					onAction="#borrar" prefWidth="75.0" text="Borrar" />
-				<Button fx:id="btnCancelar" mnemonicParsing="false"
-					onAction="#cancelar" text="Cancelar" />
+				<Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefWidth="75.0" text="Agregar" />
+				<Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefWidth="75.0" text="Editar" />
+				<Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrar" prefWidth="75.0" text="Borrar" />
+				<Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
 			</children>
 		</FlowPane>
-		<VBox alignment="CENTER_RIGHT" prefHeight="200.0"
-			prefWidth="100.0" spacing="34.0" GridPane.columnIndex="1"
-			GridPane.rowIndex="2" GridPane.rowSpan="2">
+		<VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="34.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
 			<children>
 				<Label text="Equipo: " />
 				<Label text="Medalla: " />
 				<Label text="Edad: " />
 			</children>
 		</VBox>
-		<VBox alignment="CENTER_LEFT" prefHeight="200.0"
-			prefWidth="100.0" spacing="25.0" GridPane.columnIndex="2"
-			GridPane.rowIndex="2" GridPane.rowSpan="2">
+		<VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
 			<children>
-				<ComboBox fx:id="cboxEquipo" onAction="#seleccionarEquipo"
-					prefHeight="24.0" prefWidth="170.0" />
-				<ComboBox fx:id="cboxMedalla"
-					onAction="#seleccionarMedalla" prefHeight="24.0" prefWidth="170.0" />
-				<TextField fx:id="txtEdad" prefHeight="24.0"
-					prefWidth="123.0">
+				<ComboBox fx:id="cboxEquipo" onAction="#seleccionarEquipo" prefHeight="24.0" prefWidth="170.0" promptText="Elija Equipo" />
+				<ComboBox fx:id="cboxMedalla" onAction="#seleccionarMedalla" prefHeight="24.0" prefWidth="170.0" promptText="Elija Medalla" />
+				<TextField fx:id="txtEdad" prefHeight="24.0" prefWidth="123.0">
 					<VBox.margin>
 						<Insets right="50.0" />
 					</VBox.margin>
