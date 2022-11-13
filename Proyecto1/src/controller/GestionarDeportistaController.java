@@ -219,7 +219,6 @@ public class GestionarDeportistaController implements Initializable {
 		String genero = d.getSexo();
 		int peso = d.getPeso();
 		int altura = d.getAltura();
-		System.out.println(genero);
 
 		txtNombre.setText(nombre);
 		

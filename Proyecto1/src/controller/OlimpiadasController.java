@@ -354,6 +354,11 @@ public class OlimpiadasController implements Initializable {
 			}
 
 			cboxOlimpiadas.setItems(olimpiadas);
+			
+			editarOlimpiada.setDisable(true);
+			borrarOlimpiada.setDisable(true);
+			aniadirEvento.setDisable(true);
+			
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -398,6 +403,10 @@ public class OlimpiadasController implements Initializable {
 					}
 
 					cboxOlimpiadas.setItems(olimpiadas);
+					editarOlimpiada.setDisable(true);
+					borrarOlimpiada.setDisable(true);
+					aniadirEvento.setDisable(true);
+					
 				} else {
 					alert = new Alert(Alert.AlertType.ERROR);
 					alert.setHeaderText(null);
@@ -488,6 +497,10 @@ public class OlimpiadasController implements Initializable {
 			newStage.showAndWait();
 
 			eventos = FXCollections.observableArrayList();
+			
+			editarEvento.setDisable(true);
+			borrarEvento.setDisable(true);
+			verParticipaciones.setDisable(true);
 
 			try {
 				cargarEvento = new EventoDAO();
@@ -555,6 +568,9 @@ public class OlimpiadasController implements Initializable {
 						alert.setContentText("No se puede borrar, existen dependencias");
 						alert.showAndWait();
 					}
+					editarEvento.setDisable(true);
+					borrarEvento.setDisable(true);
+					verParticipaciones.setDisable(true);
 
 				} catch (Exception e) {
 					// TODO: handle exception
@@ -593,6 +609,11 @@ public class OlimpiadasController implements Initializable {
 			newStage.setScene(newScene);
 			newStage.setTitle("Participaciones");
 			newStage.showAndWait();
+			
+			
+			editarEvento.setDisable(true);
+			borrarEvento.setDisable(true);
+			verParticipaciones.setDisable(true);
 
 		} catch (Exception e) {
 			// TODO: handle exception

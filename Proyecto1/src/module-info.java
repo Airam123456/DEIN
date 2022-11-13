@@ -9,6 +9,7 @@ module Proyecto1 {
 	requires javafx.graphics;
 	requires java.sql;
 	requires javafx.base;
+	requires org.kordamp.ikonli.javafx;
 
 	opens application to javafx.graphics, javafx.fxml;
 	opens controller to javafx.graphics, javafx.fxml;

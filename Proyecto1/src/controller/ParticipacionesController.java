@@ -228,6 +228,8 @@ public class ParticipacionesController implements Initializable {
 				alert.setContentText("Elije Medalla");
 				alert.showAndWait();
 			}
+			btnBorrar.setDisable(true);
+			btnEditar.setDisable(true);
 
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -280,6 +282,8 @@ public class ParticipacionesController implements Initializable {
 					alert.setContentText("No se puede borrar, existen dependencias");
 					alert.showAndWait();
 				}
+				btnBorrar.setDisable(true);
+				btnEditar.setDisable(true);
 
 			} catch (Exception e) {
 				// TODO: handle exception

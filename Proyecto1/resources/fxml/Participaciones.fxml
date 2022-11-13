@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParticipacionesController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="659.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParticipacionesController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="353.0" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="98.0" />
@@ -49,10 +50,22 @@
 		</ListView>
 		<FlowPane alignment="CENTER" hgap="50.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
 			<children>
-				<Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefWidth="75.0" text="Agregar" />
-				<Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefWidth="75.0" text="Editar" />
-				<Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrar" prefWidth="75.0" text="Borrar" />
-				<Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+				<Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" style="-fx-background-radius: 10;" text="Agregar">
+               <graphic>
+                  <FontIcon iconLiteral="fas-upload" />
+               </graphic></Button>
+				<Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" style="-fx-background-radius: 10;" text="Editar">
+               <graphic>
+                  <FontIcon iconLiteral="fas-pen" />
+               </graphic></Button>
+				<Button fx:id="btnBorrar" mnemonicParsing="false" onAction="#borrar" style="-fx-background-radius: 10;" text="Borrar">
+               <graphic>
+                  <FontIcon iconLiteral="fas-trash-alt" />
+               </graphic></Button>
+				<Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" style="-fx-background-radius: 10;" text="Cancelar">
+               <graphic>
+                  <FontIcon iconLiteral="fas-times-circle" />
+               </graphic></Button>
 			</children>
 		</FlowPane>
 		<VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="34.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">

@@ -13,12 +13,10 @@ public class ConexionDB {
 	private Connection conexion;
 
 	public ConexionDB() throws SQLException {
-
-		String user = "admin";
-
-		String password = "password";
-
-		String url = "jdbc:mysql://localhost/olimpiadas?serverTimezone=Europe/Madrid";
+		
+		String url = Propiedades.getValor("url");
+		String user = Propiedades.getValor("user");
+		String password = Propiedades.getValor("password");
 
 		conexion = DriverManager.getConnection(url, user, password);
 
@@ -28,16 +26,6 @@ public class ConexionDB {
 
 	public Connection getConexion() throws SQLException {
 
-		//return conexion;
-		
-//		
-//		String url = Propiedades.getValor("url");
-//	    String user = Propiedades.getValor("user");
-//	    String password = Propiedades.getValor("password");
-//		conexion = DriverManager.getConnection(url, user, password);
-//
-//		conexion.setAutoCommit(true);
-//		
 		return conexion;
 
 	}

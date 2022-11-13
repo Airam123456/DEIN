@@ -12,43 +12,29 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0"
-	prefWidth="854.0" xmlns="http://javafx.com/javafx/19"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.GestionarDeportistaController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="854.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GestionarDeportistaController">
 	<columnConstraints>
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="439.0" minWidth="10.0" prefWidth="439.0" />
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="297.0" minWidth="10.0" prefWidth="138.0" />
-		<ColumnConstraints hgrow="SOMETIMES"
-			maxWidth="361.0" minWidth="10.0" prefWidth="188.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="439.0" minWidth="10.0" prefWidth="439.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="138.0" />
+		<ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="188.0" />
 	</columnConstraints>
 	<rowConstraints>
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="20.0"
-			vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Label text="Gestionar Deportista" GridPane.columnSpan="3"
-			GridPane.halignment="CENTER">
+		<Label text="Gestionar Deportista" GridPane.columnSpan="3" GridPane.halignment="CENTER">
 			<font>
 				<Font name="System Bold" size="20.0" />
 			</font>
 		</Label>
-		<Label text="Nombre:" GridPane.columnIndex="1"
-			GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+		<Label text="Nombre:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
 			<font>
 				<Font size="15.0" />
 			</font>
@@ -56,8 +42,7 @@
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</Label>
-		<Label text="Sexo:" GridPane.columnIndex="1"
-			GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+		<Label text="Sexo:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
 			<GridPane.margin>
 				<Insets />
 			</GridPane.margin>
@@ -68,9 +53,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<Label layoutX="108.0" layoutY="207.0" text="Peso:"
-			GridPane.columnIndex="1" GridPane.halignment="RIGHT"
-			GridPane.rowIndex="3">
+		<Label layoutX="108.0" layoutY="207.0" text="Peso:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
 			<padding>
 				<Insets right="20.0" />
 			</padding>
@@ -78,8 +61,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<Label text="Altura:" GridPane.columnIndex="1"
-			GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+		<Label text="Altura:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
 			<padding>
 				<Insets right="20.0" />
 			</padding>
@@ -87,64 +69,56 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<TextField fx:id="txtNombre" GridPane.columnIndex="2"
-			GridPane.rowIndex="1">
+		<TextField fx:id="txtNombre" GridPane.columnIndex="2" GridPane.rowIndex="1">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0"
-			maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-			minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0"
-			GridPane.columnIndex="2" GridPane.rowIndex="3" />
-		<TextField fx:id="txtAltura" maxHeight="-Infinity"
-			maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-			prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="2"
-			GridPane.rowIndex="4">
+		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+		<TextField fx:id="txtAltura" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0"
-			prefWidth="527.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
+		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0" prefWidth="527.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
 			<children>
-				<Button fx:id="btnEditar" alignment="TOP_CENTER"
-					mnemonicParsing="false" onAction="#editar" text="Modificar">
+				<Button fx:id="btnEditar" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#editar" style="-fx-background-radius: 10;" text="Modificar">
 					<font>
 						<Font size="15.0" />
 					</font>
+               <graphic>
+                  <FontIcon iconLiteral="fas-pen" />
+               </graphic>
 				</Button>
-				<Button fx:id="btnBorrar" alignment="TOP_CENTER"
-					layoutX="385.0" layoutY="33.0" mnemonicParsing="false"
-					onAction="#borrar" text="Borrar">
+				<Button fx:id="btnBorrar" alignment="TOP_CENTER" layoutX="385.0" layoutY="33.0" mnemonicParsing="false" onAction="#borrar" style="-fx-background-radius: 10;" text="Borrar">
 					<font>
 						<Font size="15.0" />
 					</font>
+               <graphic>
+                  <FontIcon iconLiteral="fas-trash-alt" />
+               </graphic>
 				</Button>
-				<Button fx:id="btnCancelar" mnemonicParsing="false"
-					onAction="#cancelar" text="Cancelar">
+				<Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" style="-fx-background-radius: 10;" text="Cancelar">
 					<font>
 						<Font size="15.0" />
 					</font>
+               <graphic>
+                  <FontIcon iconLiteral="fas-times-circle" />
+               </graphic>
 				</Button>
 			</children>
 		</FlowPane>
-		<FlowPane alignment="CENTER" hgap="30.0" prefHeight="200.0"
-			prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+		<FlowPane alignment="CENTER" hgap="30.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
 			<children>
-				<RadioButton fx:id="rbtnMasculino"
-					mnemonicParsing="false" selected="true" text="Masculino">
+				<RadioButton fx:id="rbtnMasculino" mnemonicParsing="false" selected="true" text="Masculino">
 					<toggleGroup>
 						<ToggleGroup fx:id="sexo" />
 					</toggleGroup>
 				</RadioButton>
-				<RadioButton fx:id="rbtnFemenino"
-					mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
+				<RadioButton fx:id="rbtnFemenino" mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
 			</children>
 		</FlowPane>
-		<ListView fx:id="listDeportistas"
-			onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0"
-			GridPane.rowIndex="1" GridPane.rowSpan="4">
+		<ListView fx:id="listDeportistas" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="4">
 			<GridPane.margin>
 				<Insets left="25.0" />
 			</GridPane.margin>
