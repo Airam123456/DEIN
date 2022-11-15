@@ -96,6 +96,8 @@ public class GestionarDeporteController implements Initializable {
 			alert.setContentText(error);
 			alert.showAndWait();
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -153,6 +155,8 @@ public class GestionarDeporteController implements Initializable {
 				alert.showAndWait();
 			}
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -174,6 +178,9 @@ public class GestionarDeporteController implements Initializable {
 		id = de.getId();
 		String deporte = de.getNombre();
 		txtDeporte.setText(deporte);
+		
+		btnEditar.setDisable(false);
+		btnBorrar.setDisable(false);
 
 	}
 
@@ -191,7 +198,15 @@ public class GestionarDeporteController implements Initializable {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Ha habido problemas al cargar los datos \nContacte con el servicio tecnico");
+			alert.showAndWait();
 		}
+		
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 }

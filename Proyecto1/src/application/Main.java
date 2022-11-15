@@ -15,6 +15,7 @@ public class Main extends Application {
 			GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("/fxml/Olimpiadas.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
+			primaryStage.setTitle("OLIMPIADAS");
 			Image imagen = new Image(getClass().getResource("/picture/sports.jpg").toString());
 			primaryStage.getIcons().add(imagen);
 			primaryStage.setScene(scene);

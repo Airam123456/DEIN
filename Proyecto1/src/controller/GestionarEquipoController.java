@@ -99,6 +99,8 @@ public class GestionarEquipoController implements Initializable {
 			alert.setContentText(error);
 			alert.showAndWait();
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -157,6 +159,8 @@ public class GestionarEquipoController implements Initializable {
 				alert.showAndWait();
 			}
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -181,6 +185,10 @@ public class GestionarEquipoController implements Initializable {
 
 		txtNombre.setText(nombre);
 		txtIniciales.setText(iniciales);
+		
+		btnEditar.setDisable(false);
+		btnBorrar.setDisable(false);
+
 
 	}
 
@@ -199,6 +207,8 @@ public class GestionarEquipoController implements Initializable {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 }

@@ -75,6 +75,10 @@ public class GestionarDeportistaController implements Initializable {
 		if (nombre.isEmpty()) {
 			error += "\n El campo Nombre no puede estar vacio";
 		}
+		
+		if(nombre.length()>11) {
+			error += "\n El campo Nombre no puede tener mas de 11 caracteres";
+		}
 
 		try {
 			peso = Integer.parseInt(txtPeso.getText());
@@ -136,6 +140,8 @@ public class GestionarDeportistaController implements Initializable {
 			alert.setContentText(error);
 			alert.showAndWait();
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -197,6 +203,8 @@ public class GestionarDeportistaController implements Initializable {
 				alert.showAndWait();
 			}
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 
@@ -230,6 +238,9 @@ public class GestionarDeportistaController implements Initializable {
 
 		txtPeso.setText(Integer.toString(peso));
 		txtAltura.setText(Integer.toString(altura));
+		
+		btnEditar.setDisable(false);
+		btnBorrar.setDisable(false);
 
 	}
 
@@ -247,6 +258,8 @@ public class GestionarDeportistaController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		btnEditar.setDisable(true);
+		btnBorrar.setDisable(true);
 
 	}
 }
