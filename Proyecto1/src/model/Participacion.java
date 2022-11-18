@@ -24,6 +24,10 @@ public class Participacion {
 	public Deportista getDeportista() {
 		return deportista;
 	}
+	
+	public String getNombre(){
+		return deportista.getNombre();
+	}
 
 	public Evento getEvento() {
 		return evento;
@@ -31,6 +35,10 @@ public class Participacion {
 
 	public Equipo getEquipo() {
 		return equipo;
+	}
+	
+	public String getIniciales() {
+		return equipo.getIniciales();
 	}
 
 	public int getEdad() {

@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="659.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParticipacionesController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="659.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ParticipacionesController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="374.0" minWidth="10.0" prefWidth="353.0" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="98.0" />
@@ -28,11 +30,6 @@
 		<RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<ListView fx:id="listParticipaciones" onMouseClicked="#selectParticipaciones" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
-			<GridPane.margin>
-				<Insets bottom="25.0" left="25.0" right="25.0" />
-			</GridPane.margin>
-		</ListView>
 		<Label text="PARTICIPACIONES" GridPane.columnSpan="3" GridPane.halignment="CENTER">
 			<font>
 				<Font size="20.0" />
@@ -70,6 +67,7 @@
 		</FlowPane>
 		<VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="34.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2">
 			<children>
+            <Label text="Nombre: " />
 				<Label text="Equipo: " />
 				<Label text="Medalla: " />
 				<Label text="Edad: " />
@@ -77,14 +75,26 @@
 		</VBox>
 		<VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="25.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
 			<children>
+            <TextField fx:id="txtNombre" disable="true" maxWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" />
 				<ComboBox fx:id="cboxEquipo" onAction="#seleccionarEquipo" prefHeight="24.0" prefWidth="170.0" promptText="Elija Equipo" />
 				<ComboBox fx:id="cboxMedalla" onAction="#seleccionarMedalla" prefHeight="24.0" prefWidth="170.0" promptText="Elija Medalla" />
-				<TextField fx:id="txtEdad" prefHeight="24.0" prefWidth="123.0">
+				<TextField fx:id="txtEdad" prefHeight="24.0" prefWidth="150.0">
 					<VBox.margin>
 						<Insets right="50.0" />
 					</VBox.margin>
 				</TextField>
 			</children>
 		</VBox>
+      <TableView fx:id="tableParticipaciones" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+        <columns>
+          <TableColumn fx:id="columNombre" prefWidth="343.0" text="Nombre" />
+            <TableColumn fx:id="columEquipo" minWidth="0.0" prefWidth="79.0" text="Equipo" />
+            <TableColumn fx:id="columEdad" prefWidth="58.0" text="Edad" />
+            <TableColumn fx:id="columMedalla" prefWidth="128.0" text="Medalla" />
+        </columns>
+         <GridPane.margin>
+            <Insets left="25.0" right="25.0" />
+         </GridPane.margin>
+      </TableView>
 	</children>
 </GridPane>
