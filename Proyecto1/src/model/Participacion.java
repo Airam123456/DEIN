@@ -46,7 +46,12 @@ public class Participacion {
 	}
 
 	public String getMedalla() {
-		return medalla;
+		if(medalla.equals("0")) {
+			return "Sin Medalla";
+		}else {
+			return medalla;
+		}
+		
 	}
 
 	@Override

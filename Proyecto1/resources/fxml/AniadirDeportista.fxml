@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="438.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AniadirDeportistaController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="438.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AniadirDeportistaController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="244.0" />
 		<ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="361.0" />
@@ -24,6 +25,7 @@
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
@@ -72,13 +74,13 @@
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-		<TextField fx:id="txtAltura" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+		<TextField fx:id="txtAltura" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0" prefWidth="527.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
+		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0" prefWidth="527.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
 			<children>
 				<Button fx:id="btnAceptar" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#aceptar" style="-fx-background-radius: 10;" text="Aceptar">
 					<font>
@@ -108,5 +110,18 @@
 				<RadioButton fx:id="rbtnFemenino" mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
 			</children>
 		</FlowPane>
+      <ImageView fx:id="image" fitHeight="58.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
+      </ImageView>
+      <Button fx:id="btnImagen" mnemonicParsing="false" onAction="#importarImagen" style="-fx-background-radius: 10;" text="Imagen" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontIcon iconLiteral="fas-image" />
+         </graphic>
+      </Button>
 	</children>
 </GridPane>

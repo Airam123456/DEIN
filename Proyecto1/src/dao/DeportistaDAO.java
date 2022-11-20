@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class DeportistaDAO {
 			ps=conexion.getConexion().prepareStatement("select *  from Deportista");
 			ResultSet rs= ps.executeQuery();
 			while (rs.next()) {
-				lstDeportistas.add(new Deportista (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5)));
+				lstDeportistas.add(new Deportista (rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getBinaryStream(6)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -41,13 +42,13 @@ public class DeportistaDAO {
 	
 	public Deportista selectDeportistaPorId (int id) {
 		PreparedStatement ps;
-		Deportista deportista =null;
+		Deportista deportista = null;
 		try {
 			ps= conexion.getConexion().prepareStatement("select * from Deportista where id_deportista = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				deportista = new Deportista (id, rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+				deportista = new Deportista (id, rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getBinaryStream(6));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,8 +57,27 @@ public class DeportistaDAO {
 		return deportista;
 	}
 	
+	public InputStream selectFoto (int id) {
+		InputStream foto = null;
+		PreparedStatement ps;
+		
+		try {
+			ps= conexion.getConexion().prepareStatement("select foto from Deportista where id_deportista = ?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				foto = rs.getBinaryStream(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return foto;
+	}
+	
+	
 	public void insertDeportista (Deportista deportista) {
-		String sql = "insert into Deportista (nombre, sexo, peso, altura) values (?,?,?,?)";
+		String sql = "insert into Deportista (nombre, sexo, peso, altura, foto) values (?,?,?,?,?)";
 		PreparedStatement ps;
 		Connection conn;
 		
@@ -68,6 +88,7 @@ public class DeportistaDAO {
 			ps.setString(2, deportista.getSexo());
 			ps.setInt(3, deportista.getPeso());
 			ps.setInt(4, deportista.getAltura());
+			ps.setBlob(5, deportista.getFoto());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -95,7 +116,7 @@ public class DeportistaDAO {
 	}
 	
 	public void updateDeportista (Deportista deportista) {
-		String sql = "update Deportista set nombre = ?, sexo= ?, peso = ?, altura = ? where id_deportista = ?";
+		String sql = "update Deportista set nombre = ?, sexo= ?, peso = ?, altura = ?, foto = ? where id_deportista = ?";
 		PreparedStatement ps;
 		Connection conn;
 		
@@ -106,7 +127,9 @@ public class DeportistaDAO {
 			ps.setString(2, deportista.getSexo());
 			ps.setInt(3, deportista.getPeso());
 			ps.setInt(4, deportista.getAltura());
-			ps.setInt(5, deportista.getId());
+			ps.setBlob(5, deportista.getFoto());
+			ps.setInt(6, deportista.getId());
+			
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

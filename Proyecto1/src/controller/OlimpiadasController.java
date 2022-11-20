@@ -288,8 +288,6 @@ public class OlimpiadasController implements Initializable {
 		try {
 			cargarEvento = new EventoDAO();
 			
-			System.out.println(cargarEvento.selectEventosPorOlimpiada((Olimpiada) cboxOlimpiadas.getSelectionModel().getSelectedItem()));
-			
 			if(cargarEvento.selectEventosPorOlimpiada((Olimpiada) cboxOlimpiadas.getSelectionModel().getSelectedItem()) != null) {
 				eventos.addAll(cargarEvento
 						.selectEventosPorOlimpiada((Olimpiada) cboxOlimpiadas.getSelectionModel().getSelectedItem()));
@@ -299,7 +297,13 @@ public class OlimpiadasController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error con la base de datos");
+			alert.showAndWait();
 			e.printStackTrace();
+			
 		}
 		
 		
@@ -329,23 +333,19 @@ public class OlimpiadasController implements Initializable {
 			newStage.getIcons().add(imagen);
 			newStage.showAndWait();
 
-			listEventos.getSelectionModel().clearSelection();
-			olimpiadas = FXCollections.observableArrayList();
-			cargarOlimpiada = new OlimpiadasDAO();
-			if (rbtnVerano.isSelected()) {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
-			} else {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
-			}
 
-			cboxOlimpiadas.setItems(olimpiadas);
+			if (rbtnVerano.isSelected()) {
+				verano(event);
+			} else {
+				invierno(event);
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error al aniadir Olimpiada");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -373,15 +373,11 @@ public class OlimpiadasController implements Initializable {
 			newStage.getIcons().add(imagen);
 			newStage.showAndWait();
 
-			olimpiadas = FXCollections.observableArrayList();
-			cargarOlimpiada = new OlimpiadasDAO();
 			if (rbtnVerano.isSelected()) {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
+				verano(event);
 			} else {
-				olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
+				invierno(event);
 			}
-
-			cboxOlimpiadas.setItems(olimpiadas);
 			
 			editarOlimpiada.setDisable(true);
 			borrarOlimpiada.setDisable(true);
@@ -393,7 +389,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error al editar Olimpiada");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -422,15 +418,12 @@ public class OlimpiadasController implements Initializable {
 					alert.setContentText("Olimpiada borrada correctamente");
 					alert.showAndWait();
 
-					olimpiadas = FXCollections.observableArrayList();
-					cargarOlimpiada = new OlimpiadasDAO();
-					if (rbtnVerano.isSelected()) {
-						olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
-					} else {
-						olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
-					}
 
-					cboxOlimpiadas.setItems(olimpiadas);
+					if (rbtnVerano.isSelected()) {
+						verano(event);
+					} else {
+						invierno(event);
+					}
 					editarOlimpiada.setDisable(true);
 					borrarOlimpiada.setDisable(true);
 					aniadirEvento.setDisable(true);
@@ -659,14 +652,19 @@ public class OlimpiadasController implements Initializable {
 			cargarOlimpiada = new OlimpiadasDAO();
 			olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasVerano());
 			cboxOlimpiadas.setItems(olimpiadas);
+			cboxOlimpiadas.getSelectionModel().selectFirst();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e.getMessage());
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se han poodido cargar las olimpiadas de verano");
+			alert.showAndWait();
 		}
-		eventos = FXCollections.observableArrayList();
-		eventos.clear();
-		listEventos.setItems(eventos);
+
 	}
 
 	// Event Listener on RadioButton[#rbtnInvierno].onAction
@@ -678,14 +676,20 @@ public class OlimpiadasController implements Initializable {
 			cargarOlimpiada = new OlimpiadasDAO();
 			olimpiadas.addAll(cargarOlimpiada.selectOlimpiadasInvierno());
 			cboxOlimpiadas.setItems(olimpiadas);
+			cboxOlimpiadas.getSelectionModel().selectFirst();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e.getMessage());
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se han poodido cargar las olimpiadas de invierno");
+			alert.showAndWait();
 		}
-		eventos = FXCollections.observableArrayList();
-		eventos.clear();
-		listEventos.setItems(eventos);
+		
+
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import dao.DeporteDAO;
+import dao.EquipoDAO;
 import dao.EventoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -60,11 +61,25 @@ public class AniadirEventoController implements Initializable {
 			error += "\n Escoja un Deporte";
 		}
 
+		e = new Evento(idEvento, nombre, o, d);
+		
+		try {
+			cargarEvento = new EventoDAO();
+			if(cargarEvento.existeEvento(e) == true)
+				error += "\n Evento ya existente";
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error al comprobar Evento");
+			alert.showAndWait();
+		}
 		
 		
 		if (error.equals("")) {
-			e = new Evento(idEvento, nombre, o, d);
-			
 			try {
 				cargarEvento = new EventoDAO();
 				if (edit) {
@@ -95,9 +110,13 @@ public class AniadirEventoController implements Initializable {
 
 			} catch (Exception e) {
 				// TODO: handle exception
-//				System.out.println("Erorr");
 				System.out.println(e.getMessage());
 				e.printStackTrace();
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error, elija Deporte");
+				alert.showAndWait();
 			}
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);

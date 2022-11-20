@@ -1,19 +1,23 @@
 package model;
 
+import java.io.InputStream;
+
 public class Deportista {
 	private int id;
 	private String nombre;
 	private String sexo;
 	private int peso;
 	private int altura;
+	private InputStream foto;
 	
-	public Deportista(int id, String nombre, String sexo, int peso, int altura) {
+	public Deportista(int id, String nombre, String sexo, int peso, int altura, InputStream foto) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.sexo = sexo;
 		this.peso = peso;
 		this.altura = altura;
+		this.foto = foto;
 	}
 
 	public Deportista() {
@@ -44,10 +48,28 @@ public class Deportista {
 	public int getAltura() {
 		return altura;
 	}
+	
+	public InputStream getFoto() {
+		return foto;
+	}
+	
 	@Override
 	public String toString() {
 		
-		return nombre + "; Peso: " + peso + "Kg, Altura: " + altura + "cm";
+		if(peso!=0 && altura!=0) {
+			return nombre + "; Peso: " + peso + "Kg, Altura: " + altura + "cm";
+		}else {
+			if(peso!=0 && altura==0) {
+				return nombre + "; Peso: " + peso + "Kg, Altura no definida";
+			}
+			if(peso==0 && altura!=0) {
+				return nombre + "; Peso no definido, Altura: " + altura + "cm";
+			}
+			return nombre + "; Peso no definido, Altura no definida";
+
+		}
+		
+		
 	}
 	
 

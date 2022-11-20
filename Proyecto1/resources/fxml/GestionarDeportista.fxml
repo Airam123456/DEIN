@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,6 +27,7 @@
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
@@ -74,13 +76,13 @@
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-		<TextField fx:id="txtAltura" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+		<TextField fx:id="txtAltura" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0" prefWidth="527.0" GridPane.columnSpan="3" GridPane.rowIndex="5">
+		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0" prefWidth="527.0" GridPane.columnSpan="3" GridPane.rowIndex="6">
 			<children>
 				<Button fx:id="btnEditar" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#editar" style="-fx-background-radius: 10;" text="Modificar">
 					<font>
@@ -118,10 +120,23 @@
 				<RadioButton fx:id="rbtnFemenino" mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
 			</children>
 		</FlowPane>
-		<ListView fx:id="listDeportistas" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="4">
+		<ListView fx:id="listDeportistas" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="5">
 			<GridPane.margin>
 				<Insets left="25.0" />
 			</GridPane.margin>
 		</ListView>
+      <ImageView fx:id="image" fitHeight="73.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets right="15.0" />
+         </GridPane.margin>
+      </ImageView>
+      <Button fx:id="btnImagen" mnemonicParsing="false" onAction="#importarImagen" style="-fx-background-radius: 10;" text="Imagen" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <graphic>
+            <FontIcon iconLiteral="fas-image" />
+         </graphic>
+      </Button>
 	</children>
 </GridPane>

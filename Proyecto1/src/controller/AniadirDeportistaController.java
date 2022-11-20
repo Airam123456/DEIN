@@ -1,17 +1,27 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Deportista;
 import model.Olimpiada;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import dao.DeporteDAO;
 import dao.DeportistaDAO;
@@ -19,7 +29,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.RadioButton;
 
-public class AniadirDeportistaController {
+public class AniadirDeportistaController implements Initializable{
 	@FXML
 	private TextField txtNombre;
 	@FXML
@@ -36,9 +46,15 @@ public class AniadirDeportistaController {
 	private ToggleGroup sexo;
 	@FXML
 	private RadioButton rbtnFemenino;
+	@FXML
+    private Button btnImagen;
+    @FXML
+    private ImageView image;
 	
 	private Deportista d;
 	private DeportistaDAO existe; 
+	private InputStream foto;
+	private File archivo;
 
 	// Event Listener on Button[#btnAceptar].onAction
 	@FXML
@@ -61,25 +77,30 @@ public class AniadirDeportistaController {
 			error += "\n El campo Nombre no puede estar vacio";
 		}
 		
-		try {
-			peso = Integer.parseInt (txtPeso.getText());
-			if(peso > 500 || peso < 30) {
-				error += "\n Peso fuera de rango";
-			}
-		} catch (Exception e) {
-			error += "\n El Peso tiene que ser un entero";
+		if(nombre.length()>11) {
+			error += "\n El campo Nombre no puede tener mas de 11 caracteres";
 		}
 		
 		try {
-			altura = Integer.parseInt (txtAltura.getText());
-			if(altura > 250 || altura < 120) {
-				error += "\n Altura fuera de rango. Tiene que ir en cm";
+			peso = Integer.parseInt(txtPeso.getText());
+			if (peso > 500 || peso < 0) {
+				error += "\n Peso fuera de rango.\n Si no desea definir un peso ponga 0";
 			}
 		} catch (Exception e) {
-			error += "\n La Altura tiene que se un entero en cm";
+			error += "\n El Peso tiene que ser un entero.\n Si no desea definir un peso ponga 0";
 		}
+
+		try {
+			altura = Integer.parseInt(txtAltura.getText());
+			if (altura > 250 || altura < 0) {
+				error += "\n Altura fuera de rango. Tiene que ir en cm.\n Si no desea definir una altura ponga 0";
+			}
+		} catch (Exception e) {
+			error += "\n La Altura tiene que se un entero en cm.\n Si no desea definir una altura ponga 0";
+		}
+
 		
-		d = new Deportista(id, nombre, sexo, peso, altura);
+		d = new Deportista(id, nombre, sexo, peso, altura,foto);
 		
 		try {
 			existe = new DeportistaDAO();
@@ -118,6 +139,35 @@ public class AniadirDeportistaController {
 		}
 		
 	}
+    @FXML
+    void importarImagen(ActionEvent event) {
+    	importar(new Stage());
+    }
+    
+
+	private void importar(Stage stage) {
+
+		FileChooser fileDialog = new FileChooser();
+		fileDialog.setTitle("Open Image");
+		fileDialog.setInitialDirectory(new File("/home/dm2/Escritorio"));
+		archivo = fileDialog.showOpenDialog(stage);
+		
+		try {
+			
+			foto = (InputStream) new FileInputStream(archivo);
+			image.setImage(new Image(foto));
+			
+		} catch (FileNotFoundException e) {
+			
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido importar la imagen");
+			alert.showAndWait();
+			e.printStackTrace();
+		}
+	}
+	
 	// Event Listener on Button[#btnCancelar].onAction
 	@FXML
 	public void cancelar(ActionEvent event) {
@@ -129,5 +179,14 @@ public class AniadirDeportistaController {
 	
 	public Deportista getDeportista() {
 		return d;
+	}
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		txtPeso.setPromptText("Indefinido = 0");
+		txtPeso.getParent().requestFocus();
+		txtAltura.setPromptText("Indefinido = 0");
+		txtAltura.getParent().requestFocus();
+		
 	}
 }
