@@ -47,6 +47,11 @@ public class AniadirDeporteController {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -67,6 +72,11 @@ public class AniadirDeporteController {
 
 			} catch (Exception e) {
 				// TODO: handle exception
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error en la base de Datos");
+				alert.showAndWait();
 			}
 
 		} else {

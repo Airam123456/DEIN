@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.ConexionDB;
+import javafx.scene.control.Alert;
 import model.Deporte;
 import model.Deportista;
 import model.Equipo;
@@ -32,6 +33,11 @@ public class EquipoDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Equipos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -51,6 +57,11 @@ public class EquipoDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Equipos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		return equipo;
@@ -84,6 +95,11 @@ public class EquipoDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido insertar Equipo");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}
@@ -103,6 +119,11 @@ public class EquipoDAO {
 				return true;
 			}
 		} catch (SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error base de datos");
+			alert.showAndWait();
 			return true;
 		}
 		return false;
@@ -122,6 +143,11 @@ public class EquipoDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido actualizar los Equipos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}

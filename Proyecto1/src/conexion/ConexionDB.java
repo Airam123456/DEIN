@@ -21,13 +21,10 @@ public class ConexionDB {
 		conexion = DriverManager.getConnection(url, user, password);
 
 		conexion.setAutoCommit(true);
-
 	}
 
 	public Connection getConexion() throws SQLException {
-
 		return conexion;
-
 	}
 
 }

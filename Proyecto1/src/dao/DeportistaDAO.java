@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 
 
 import conexion.ConexionDB;
+import javafx.scene.control.Alert;
 import model.Deporte;
 import model.Deportista;
 import model.Equipo;
@@ -33,10 +35,13 @@ public class DeportistaDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Deportistas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
-		
-		
 		return lstDeportistas;
 	}
 	
@@ -52,6 +57,11 @@ public class DeportistaDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Deportistas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		return deportista;
@@ -66,10 +76,15 @@ public class DeportistaDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				foto = rs.getBinaryStream(1);
+				foto = rs.getBinaryStream(1); 
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar la foto");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		return foto;
@@ -92,6 +107,11 @@ public class DeportistaDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se insertar el Deportista");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}
@@ -110,6 +130,11 @@ public class DeportistaDAO {
 				return true;
 			}
 		} catch (SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error de base de datos");
+			alert.showAndWait();
 			return true;
 		}
 		return false;
@@ -133,6 +158,11 @@ public class DeportistaDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido actualizar el Deportistas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}

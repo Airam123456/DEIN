@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.ConexionDB;
+import javafx.scene.control.Alert;
 import model.Olimpiada;
 
 public class OlimpiadasDAO {
@@ -29,6 +30,11 @@ public class OlimpiadasDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar las Olimpiadas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -48,6 +54,11 @@ public class OlimpiadasDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar las Olimpiadas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -67,6 +78,11 @@ public class OlimpiadasDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar las Olimpiadas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -87,6 +103,11 @@ public class OlimpiadasDAO {
 			ps.executeUpdate();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido insertar las Olimpiadas");
+			alert.showAndWait();
 			e1.printStackTrace();
 		}
 
@@ -107,6 +128,11 @@ public class OlimpiadasDAO {
 				return true;
 			}
 		} catch (SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de datos");
+			alert.showAndWait();
 			return true;
 		}
 		return false;
@@ -127,6 +153,11 @@ public class OlimpiadasDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido actualizar las Olimpiadas");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}

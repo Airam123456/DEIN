@@ -55,6 +55,11 @@ public class AniadirEquipoController {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		
@@ -74,6 +79,11 @@ public class AniadirEquipoController {
 				myStage.close();
 			} catch (Exception e) {
 				// TODO: handle exception
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error en la base de Datos");
+				alert.showAndWait();
 			}
 		} else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -69,6 +69,11 @@ public class GestionarEquipoController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -83,6 +88,11 @@ public class GestionarEquipoController implements Initializable {
 
 			} catch (Exception e) {
 				// TODO: handle exception
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error en la base de Datos");
+				alert.showAndWait();
 				e.printStackTrace();
 			}
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -140,6 +150,11 @@ public class GestionarEquipoController implements Initializable {
 
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
+						alert = new Alert(Alert.AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setTitle("Error");
+						alert.setContentText("Error en la base de Datos");
+						alert.showAndWait();
 						e.printStackTrace();
 					}
 				} else {
@@ -205,6 +220,11 @@ public class GestionarEquipoController implements Initializable {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		btnEditar.setDisable(true);

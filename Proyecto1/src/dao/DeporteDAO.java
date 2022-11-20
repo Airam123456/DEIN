@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.ConexionDB;
+import javafx.scene.control.Alert;
 import model.Deporte;
 import model.Equipo;
 
@@ -29,6 +30,11 @@ public class DeporteDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Deportes");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		return lstDeportes;
@@ -46,6 +52,11 @@ public class DeporteDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar los Deportes");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 		return deporte;
@@ -63,6 +74,11 @@ public class DeporteDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha insertar el Deportes");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}
@@ -81,6 +97,11 @@ public class DeporteDAO {
 				return true;
 			}
 		} catch (SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error de base de datos");
+			alert.showAndWait();
 			return true;
 		}
 		return false;
@@ -99,6 +120,11 @@ public class DeporteDAO {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha modificar el Deportes");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}

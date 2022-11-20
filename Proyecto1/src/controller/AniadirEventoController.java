@@ -148,6 +148,11 @@ public class AniadirEventoController implements Initializable {
 
 		} catch (Exception e) {
 			// TODO: handle exception
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error, seleccione Deporte");
+			alert.showAndWait();
 		}
 
 	}
@@ -165,6 +170,11 @@ public class AniadirEventoController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 	}

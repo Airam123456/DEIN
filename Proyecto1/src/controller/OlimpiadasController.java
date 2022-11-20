@@ -128,7 +128,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -157,7 +157,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -186,7 +186,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -215,7 +215,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -244,7 +244,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -273,7 +273,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -485,6 +485,11 @@ public class OlimpiadasController implements Initializable {
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error el cargar ventana");
+				alert.showAndWait();
 				e.printStackTrace();
 			}
 		} catch (Exception e) {
@@ -533,6 +538,11 @@ public class OlimpiadasController implements Initializable {
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error el cargar ventana");
+				alert.showAndWait();
 				e.printStackTrace();
 			}
 		} catch (Exception e) {
@@ -636,7 +646,7 @@ public class OlimpiadasController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText(null);
 			alert.setTitle("Error");
-			alert.setContentText(e.getMessage());
+			alert.setContentText("Error el cargar ventana");
 			alert.showAndWait();
 			e.printStackTrace();
 		}
@@ -707,6 +717,11 @@ public class OlimpiadasController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error de acceso a la base de datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 

@@ -20,7 +20,6 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javax.security.auth.callback.ConfirmationCallback;
 
 import dao.DeportistaDAO;
 import javafx.collections.FXCollections;
@@ -294,19 +293,23 @@ public class GestionarDeportistaController implements Initializable {
 				Image i = new Image(getClass().getResource("/picture/naranjas.png").toString());
 				image.setImage(i);
 			}
-			else
-				image.setImage(new Image(foto));
+			else{
+				System.out.println(foto);
+				Image i = new Image(foto);
+				image.setImage(i);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("No se ha podido cargar la foto");
+			alert.showAndWait();
+			
 			e.printStackTrace();
 		}
-			
-
-		
-		
-		
 	}
 
 	@Override

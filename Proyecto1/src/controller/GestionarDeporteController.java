@@ -63,6 +63,11 @@ public class GestionarDeporteController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error en la base de Datos");
+			alert.showAndWait();
 			e.printStackTrace();
 		}
 
@@ -79,6 +84,11 @@ public class GestionarDeporteController implements Initializable {
 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error en la base de Datos");
+				alert.showAndWait();
 				e.printStackTrace();
 			}
 
@@ -136,6 +146,11 @@ public class GestionarDeporteController implements Initializable {
 
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
+						alert = new Alert(Alert.AlertType.ERROR);
+						alert.setHeaderText(null);
+						alert.setTitle("Error");
+						alert.setContentText("Error en la base de Datos");
+						alert.showAndWait();
 						e.printStackTrace();
 					}
 				} else {

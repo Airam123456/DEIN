@@ -173,6 +173,11 @@ public class ParticipacionesController implements Initializable {
 
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText("Error en la base de Datos");
+				alert.showAndWait();
 				e1.printStackTrace();
 			}
 
@@ -343,6 +348,7 @@ public class ParticipacionesController implements Initializable {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 
 			Alert alert = new Alert(Alert.AlertType.ERROR);
