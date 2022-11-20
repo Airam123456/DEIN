@@ -59,6 +59,10 @@ public class GestionarEquipoController implements Initializable {
 		if (iniciales.isEmpty()) {
 			error += "\n El campo Iniciales no puede estar vacio";
 		}
+		
+		if(iniciales.length()>3) {
+			error += "\n El campo Iniciales no puede tener mas de 3 caracteres";
+		}
 
 		eq = new Equipo(id, nombre, iniciales.toUpperCase());
 

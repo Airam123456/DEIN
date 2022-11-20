@@ -91,6 +91,7 @@ public class GestionarDeportistaController implements Initializable {
 		if (nombre.length() > 11) {
 			error += "\n El campo Nombre no puede tener mas de 11 caracteres";
 		}
+		
 
 		try {
 			peso = Integer.parseInt(txtPeso.getText());
@@ -112,15 +113,6 @@ public class GestionarDeportistaController implements Initializable {
 
 		d = new Deportista(id, nombre, sexo, peso, altura,foto);
 
-		try {
-			cargarDeportistas = new DeportistaDAO();
-			if (cargarDeportistas.existeDeportista(d) == true)
-				error += "\n Deportista ya existente";
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		if (error.equals("")) {
 
@@ -274,8 +266,17 @@ public class GestionarDeportistaController implements Initializable {
 		else
 			rbtnMasculino.setSelected(true);
 
-		txtPeso.setText(Integer.toString(peso));
-		txtAltura.setText(Integer.toString(altura));
+		if(peso == 0) {
+			txtPeso.setText("No Especificado");
+		}else {
+			txtPeso.setText(Integer.toString(peso));
+		}
+		
+		if(altura == 0) {
+			txtAltura.setText("No Especificado");
+		}else {
+			txtAltura.setText(Integer.toString(altura));
+		}
 		
 		cargarFoto(id);
 
@@ -294,9 +295,7 @@ public class GestionarDeportistaController implements Initializable {
 				image.setImage(i);
 			}
 			else{
-				System.out.println(foto);
-				Image i = new Image(foto);
-				image.setImage(i);
+				image.setImage(new Image(foto));
 			}
 			
 		} catch (SQLException e) {

@@ -71,7 +71,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<TextField fx:id="txtNombre" GridPane.columnIndex="2" GridPane.rowIndex="1">
+		<TextField fx:id="txtNombre" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
