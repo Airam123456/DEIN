@@ -41,32 +41,32 @@
 	</background>
 	<title>
 		<band height="136" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="164" height="126" uuid="ddc15723-2728-421f-b95e-2df9faf64ce1"/>
-				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement style="Title" x="170" y="0" width="263" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
+				<reportElement style="Title" x="131" y="0" width="283" height="62" uuid="1a652692-054a-40f3-ade5-68d8da36626d"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[INFORME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="219" y="62" width="213" height="22" uuid="88d4231e-f014-4b0d-b871-1737ba63a1ae"/>
+				<reportElement style="SubTitle" x="201" y="62" width="213" height="22" uuid="88d4231e-f014-4b0d-b871-1737ba63a1ae"/>
 				<textElement textAlignment="Right">
 					<font fontName="Times New Roman"/>
 				</textElement>
 				<text><![CDATA[Listado de Naciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="172" y="94" width="261" height="42" uuid="f0bfb1ea-a85a-47cd-a1a4-43f22b45e80f"/>
+				<reportElement x="120" y="90" width="294" height="42" uuid="f0bfb1ea-a85a-47cd-a1a4-43f22b45e80f"/>
 				<textElement textAlignment="Right">
 					<font size="10"/>
 				</textElement>
 				<text><![CDATA[En el siguiente informe encontraras un listado de paises con informacion relevante de cada pais: nº de habitantes y capital]]></text>
 			</staticText>
 			<image>
-				<reportElement x="433" y="-115" width="267" height="209" uuid="5d64e5b3-07bb-48ab-89dc-15c0c46bb19a"/>
-				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
+				<reportElement x="1" y="0" width="119" height="126" uuid="75f1f09e-1180-4c3e-baad-7ae0ccd9244c"/>
+				<imageExpression><![CDATA["resources/informes/naciones.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="432" y="0" width="123" height="132" uuid="53b9a994-7292-4375-9888-f1f05202f68a"/>
+				<imageExpression><![CDATA["resources/informes/coffee_stain.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -85,25 +85,27 @@
 				<reportElement style="Column header" x="0" y="0" width="138" height="15" forecolor="#736343" uuid="9b8130c7-baf0-497a-af76-f87479d8dc7d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9170ff97-e643-4ee0-8ce7-18573e08f58a"/>
 				</reportElement>
-				<text><![CDATA[id]]></text>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[IDENTIFICADOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="138" y="0" width="138" height="15" forecolor="#736343" uuid="77f4708d-f866-457a-8713-7c157fb8bed4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c082a28-0d37-4d51-a896-6018ba2eb9cb"/>
 				</reportElement>
-				<text><![CDATA[pais]]></text>
+				<text><![CDATA[PAÍS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="276" y="0" width="138" height="15" forecolor="#736343" uuid="d004e4c5-34da-4895-bc5d-0f7fb98ee32b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="55def96b-296c-4b47-9dd4-26f5dd5959c1"/>
 				</reportElement>
-				<text><![CDATA[capital]]></text>
+				<text><![CDATA[CAPITAL]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="414" y="0" width="138" height="15" forecolor="#736343" uuid="2541d5c5-a0aa-40af-9c34-915defd8adf1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="019f673a-9322-4070-b0e7-5a422af6c031"/>
 				</reportElement>
-				<text><![CDATA[num_habitantes]]></text>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Nº DE HABITANTES]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -115,6 +117,7 @@
 					<reportElement style="Detail" x="0" y="0" width="138" height="15" uuid="4fbf3f24-1fe2-41d7-bd44-57ef9dc89a4f">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9170ff97-e643-4ee0-8ce7-18573e08f58a"/>
 					</reportElement>
+					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
@@ -133,7 +136,8 @@
 					<reportElement style="Detail" x="414" y="0" width="138" height="15" uuid="6fea739f-3789-4610-a8a2-93dda2c60a5e">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="019f673a-9322-4070-b0e7-5a422af6c031"/>
 					</reportElement>
-					<textFieldExpression><![CDATA[$F{num_habitantes}]]></textFieldExpression>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[($F{num_habitantes} != null ? $F{num_habitantes}: "0")]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>

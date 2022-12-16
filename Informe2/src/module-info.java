@@ -1,11 +1,4 @@
-/**
- * 
- */
-/**
- * @author dm2
- *
- */
-module Informe1 {
+module Informe2 {
 	requires javafx.controls;
 	requires java.desktop;
 	requires javafx.web;
@@ -13,11 +6,10 @@ module Informe1 {
 	requires javafx.swing;
 	requires javafx.media;
 	requires javafx.graphics;
-	requires java.sql;
-	requires javafx.base;
 	requires jasperreports;
+	requires java.sql;
 	
 	opens application to javafx.graphics, javafx.fxml;
-	
+	opens controller to javafx.graphics, javafx.fxml;
 	
 }
