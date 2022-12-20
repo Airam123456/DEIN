@@ -23,6 +23,7 @@ public class Main extends Application {
 			JasperReport report = (JasperReport) JRLoader.loadObject(getClass().getResource("/informes/Ejer1.jasper"));
 			JasperPrint jprint = JasperFillManager.fillReport(report, null, con.getConexion());
 	        JasperViewer viewer = new JasperViewer(jprint, false);
+	        viewer.setTitle("Paises");
 	        viewer.setVisible(true);
 	    } catch (Exception e) {
 	        Alert alert = new Alert(Alert.AlertType.ERROR);

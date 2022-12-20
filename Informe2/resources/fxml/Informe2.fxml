@@ -13,8 +13,8 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0"
-	prefWidth="705.0" xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/19"
+	prefWidth="705.0" xmlns="http://javafx.com/javafx/19"
+	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="controller.Informe2Controller">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES"
@@ -53,7 +53,7 @@
 			GridPane.rowIndex="2">
 			<children>
 				<RadioButton fx:id="rbtnInforme" mnemonicParsing="false"
-					onAction="#persona" text="Informe personas">
+					onAction="#persona" selected="true" text="Informe personas">
 					<toggleGroup>
 						<ToggleGroup fx:id="radio" />
 					</toggleGroup>
@@ -69,15 +69,16 @@
 				<Insets left="40.0" />
 			</GridPane.margin>
 		</VBox>
-		<Button mnemonicParsing="false" text="Aceptar"
-			GridPane.halignment="CENTER" GridPane.rowIndex="3">
+		<Button fx:id="btnAceptar" mnemonicParsing="false"
+			onAction="#aceptar" text="Aceptar" GridPane.halignment="CENTER"
+			GridPane.rowIndex="3">
 			<GridPane.margin>
 				<Insets left="100.0" />
 			</GridPane.margin>
 		</Button>
-		<Button mnemonicParsing="false" text="Cancelar"
-			GridPane.columnIndex="1" GridPane.halignment="CENTER"
-			GridPane.rowIndex="3">
+		<Button fx:id="btnCancelar" mnemonicParsing="false"
+			onAction="#cancelar" text="Cancelar" GridPane.columnIndex="1"
+			GridPane.halignment="CENTER" GridPane.rowIndex="3">
 			<GridPane.margin>
 				<Insets right="100.0" />
 			</GridPane.margin>
