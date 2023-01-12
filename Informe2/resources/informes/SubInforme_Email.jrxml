@@ -3,12 +3,14 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubInforme_Email" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06678a99-f05e-470c-89d0-434d130b0be9">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Agenda"/>
+	<parameter name="DNI" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT e.email
 FROM agenda.email e,
 	agenda.persona p
 WHERE 
-	 e.dni = p.dni]]>
+	 e.dni = $P{DNI} 
+	 AND e.dni = p.dni]]>
 	</queryString>
 	<field name="email" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="email"/>
