@@ -14,33 +14,31 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="DNI" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT e.email
-FROM agenda.email e,
+		<![CDATA[SELECT t.telefono
+FROM agenda.telefono t,
 	agenda.persona p
 WHERE 
-	 e.dni = $P{DNI} 
-	 AND e.dni = p.dni]]>
+	 t.dni = $P{DNI} 
+	 AND t.dni = p.dni]]>
 	</queryString>
-	<field name="email" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="email"/>
-		<property name="com.jaspersoft.studio.field.label" value="email"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="email"/>
+	<field name="telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="telefono"/>
 	</field>
 	<title>
 		<band height="53" splitType="Stretch">
-			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<staticText>
 				<reportElement mode="Opaque" x="-20" y="0" width="250" height="53" forecolor="#006699" backcolor="#54AFFF" uuid="b0ef6853-bb83-4604-91fe-29f39d551508"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[EMAIL]]></text>
+				<text><![CDATA[TELEFONO]]></text>
 			</staticText>
 		</band>
 	</title>
 	<detail>
 		<band height="54" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
 				<reportElement x="10" y="10" width="200" height="30" uuid="16f36f0f-8099-4da5-864c-77e8bbb77604"/>
 				<box>
@@ -49,7 +47,7 @@ WHERE
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
