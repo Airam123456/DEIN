@@ -17,7 +17,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("/css/application.css").toExternalForm());
 			primaryStage.setTitle("BIBLIOTECA");
-			Image imagen = new Image(getClass().getResource("/picture/sports.jpg").toString());
+			Image imagen = new Image(getClass().getResource("/picture/libro.jpg").toString());
 			primaryStage.getIcons().add(imagen);
 			primaryStage.setScene(scene);
 			primaryStage.show();
