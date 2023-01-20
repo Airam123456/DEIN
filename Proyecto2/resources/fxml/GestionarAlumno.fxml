@@ -3,10 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,9 +13,9 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0"
-	prefWidth="438.0" style="-fx-background-color: skyblue;"
+	prefWidth="500.0" style="-fx-background-color: skyblue;"
 	xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.AniadirDeportistaController">
+	fx:controller="controller.GestionarAlumnoController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES"
 			maxWidth="297.0" minWidth="10.0" prefWidth="244.0" />
@@ -36,19 +33,17 @@
 			vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="30.0"
 			vgrow="SOMETIMES" />
-		<RowConstraints minHeight="10.0" prefHeight="30.0"
-			vgrow="SOMETIMES" />
 		<RowConstraints minHeight="10.0" prefHeight="20.0"
 			vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<Label text="Nuevo Deportista" GridPane.columnSpan="2"
+		<Label text="Alumno" GridPane.columnSpan="2"
 			GridPane.halignment="CENTER">
 			<font>
 				<Font name="System Bold" size="20.0" />
 			</font>
 		</Label>
-		<Label text="Nombre:" GridPane.halignment="RIGHT"
+		<Label text="DNI:" GridPane.halignment="RIGHT"
 			GridPane.rowIndex="1">
 			<font>
 				<Font size="15.0" />
@@ -57,7 +52,7 @@
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</Label>
-		<Label text="Sexo:" GridPane.halignment="RIGHT"
+		<Label text="Nombre:" GridPane.halignment="RIGHT"
 			GridPane.rowIndex="2">
 			<GridPane.margin>
 				<Insets />
@@ -69,7 +64,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<Label layoutX="108.0" layoutY="207.0" text="Peso:"
+		<Label layoutX="108.0" layoutY="207.0" text="Primer Apellido:"
 			GridPane.halignment="RIGHT" GridPane.rowIndex="3">
 			<padding>
 				<Insets right="20.0" />
@@ -78,7 +73,7 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<Label text="Altura:" GridPane.halignment="RIGHT"
+		<Label text="Segundo Apellido:" GridPane.halignment="RIGHT"
 			GridPane.rowIndex="4">
 			<padding>
 				<Insets right="20.0" />
@@ -87,26 +82,20 @@
 				<Font size="15.0" />
 			</font>
 		</Label>
-		<TextField fx:id="txtNombre" GridPane.columnIndex="1"
+		<TextField fx:id="txtDNI" GridPane.columnIndex="1"
 			GridPane.rowIndex="1">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
-		<TextField fx:id="txtPeso" layoutX="170.0" layoutY="368.0"
-			maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-			minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0"
-			GridPane.columnIndex="1" GridPane.rowIndex="3" />
-		<TextField fx:id="txtAltura" maxHeight="-Infinity"
-			maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-			prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="1"
-			GridPane.rowIndex="4">
+		<TextField fx:id="txtApellido1" layoutX="170.0"
+			layoutY="368.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
 			<GridPane.margin>
 				<Insets right="20.0" />
 			</GridPane.margin>
 		</TextField>
 		<FlowPane alignment="CENTER" hgap="20.0" prefHeight="71.0"
-			prefWidth="527.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+			prefWidth="527.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
 			<children>
 				<Button fx:id="btnAceptar" alignment="TOP_CENTER"
 					mnemonicParsing="false" onAction="#aceptar"
@@ -130,35 +119,17 @@
 				</Button>
 			</children>
 		</FlowPane>
-		<FlowPane alignment="CENTER" hgap="30.0" prefHeight="200.0"
-			prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-			<children>
-				<RadioButton fx:id="rbtnMasculino"
-					mnemonicParsing="false" selected="true" text="Masculino">
-					<toggleGroup>
-						<ToggleGroup fx:id="sexo" />
-					</toggleGroup>
-				</RadioButton>
-				<RadioButton fx:id="rbtnFemenino"
-					mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
-			</children>
-		</FlowPane>
-		<ImageView fx:id="image" fitHeight="58.0" fitWidth="65.0"
-			pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT"
-			GridPane.rowIndex="5">
+		<TextField fx:id="txtApellido2" GridPane.columnIndex="1"
+			GridPane.rowIndex="4">
 			<GridPane.margin>
-				<Insets right="15.0" />
+				<Insets right="20.0" />
 			</GridPane.margin>
-		</ImageView>
-		<Button fx:id="btnImagen" mnemonicParsing="false"
-			onAction="#importarImagen" style="-fx-background-radius: 10;"
-			text="Imagen" GridPane.columnIndex="1" GridPane.rowIndex="5">
-			<font>
-				<Font size="15.0" />
-			</font>
-			<graphic>
-				<FontIcon iconLiteral="fas-image" />
-			</graphic>
-		</Button>
+		</TextField>
+		<TextField fx:id="txtNombre" GridPane.columnIndex="1"
+			GridPane.rowIndex="2">
+			<GridPane.margin>
+				<Insets right="20.0" />
+			</GridPane.margin>
+		</TextField>
 	</children>
 </GridPane>
