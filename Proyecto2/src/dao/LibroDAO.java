@@ -20,8 +20,7 @@ public class LibroDAO {
 		ArrayList<Libro> lstLibros = new ArrayList<Libro>();
 		
 		try {
-			ps= cn.getConexion().prepareStatement("select codigo, titulo, autor, editorial, estado, baja from Libro where not exists "
-					+ "(select * from Prestamo where codigo = codigo_libro) and baja = 0");
+			ps= cn.getConexion().prepareStatement("select codigo, titulo, autor, editorial, estado, baja from libros.Libro where baja = 0");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				lstLibros.add(new Libro(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),  rs.getInt(6)));

@@ -19,44 +19,31 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<GridPane id="GridPane" prefHeight="573.0" prefWidth="1173.0"
-	style="-fx-background-color: skyblue;"
-	xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="controller.BibliotecaController">
+<GridPane id="GridPane" prefHeight="573.0" prefWidth="1173.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BibliotecaController">
 	<columnConstraints>
 		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
 		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
 	</columnConstraints>
 	<rowConstraints>
 		<RowConstraints />
-		<RowConstraints minHeight="10.0" prefHeight="451.0"
-			vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="121.0" minHeight="10.0"
-			prefHeight="110.0" vgrow="SOMETIMES" />
-		<RowConstraints maxHeight="121.0" minHeight="10.0"
-			prefHeight="110.0" vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="451.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+		<RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<GridPane minWidth="450.0" prefHeight="399.0"
-			prefWidth="450.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+		<GridPane minWidth="450.0" prefHeight="399.0" prefWidth="450.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
 			<columnConstraints>
 				<ColumnConstraints />
-				<ColumnConstraints hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="100.0" />
-				<ColumnConstraints hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints maxHeight="70.0" minHeight="4.0"
-					prefHeight="35.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="70.0" minHeight="4.0"
-					prefHeight="39.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="324.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="70.0" minHeight="4.0" prefHeight="35.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="70.0" minHeight="4.0" prefHeight="39.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="324.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Label id="alumno" text="Alumnos" GridPane.columnIndex="1"
-					GridPane.valignment="CENTER">
+				<Label id="alumno" text="Alumnos" GridPane.columnIndex="1" GridPane.valignment="CENTER">
 					<font>
 						<Font size="22.0" />
 					</font>
@@ -64,46 +51,27 @@
 						<FontIcon iconLiteral="fas-graduation-cap" />
 					</graphic>
 				</Label>
-				<TextField fx:id="txtBuscarAlumno" styleClass="txtField"
-					GridPane.columnIndex="1" GridPane.rowIndex="1" />
-				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-					spacing="10.0" GridPane.columnIndex="2">
+				<TextField fx:id="txtBuscarAlumno" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2">
 					<children>
-						<Button fx:id="btnCrearAlumno" mnemonicParsing="false"
-							onAction="#crearAlumnoBtn" styleClass="botonNormal" text="Añadir">
+						<Button fx:id="btnCrearAlumno" mnemonicParsing="false" onAction="#crearAlumnoBtn" styleClass="botonNormal" text="Añadir">
 							<tooltip>
 								<Tooltip text="Crear Alumno" />
 							</tooltip>
 						</Button>
-						<Button fx:id="btnEditarAlumno" mnemonicParsing="false"
-							onAction="#editarAlumnoBtn" styleClass="botonNormal"
-							text="Editar">
+						<Button fx:id="btnEditarAlumno" mnemonicParsing="false" onAction="#editarAlumnoBtn" styleClass="botonNormal" text="Editar">
 							<tooltip>
 								<Tooltip text="Modificar Alumno" />
 							</tooltip>
 						</Button>
-						<Button fx:id="btnBorrarAlumno" mnemonicParsing="false"
-							onAction="#borrarAlumnoBtn" styleClass="botonNormal"
-							text="Borrar">
-							<tooltip>
-								<Tooltip text="Borrar Alumno" />
-							</tooltip>
-						</Button>
 					</children>
 				</HBox>
-				<ListView fx:id="lstAlumno"
-					onMouseClicked="#seleccionarFilaLst" prefHeight="200.0"
-					prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2"
-					GridPane.rowIndex="2">
+				<ListView fx:id="lstAlumno" onMouseClicked="#seleccionarFilaLst" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
 					<contextMenu>
 						<ContextMenu>
 							<items>
-								<MenuItem fx:id="menuCrearAlumno"
-									mnemonicParsing="false" onAction="#crearAlumno" text="Añadir" />
-								<MenuItem fx:id="menuEditarAlumno"
-									mnemonicParsing="false" onAction="#editarAlumno" text="Editar" />
-								<MenuItem fx:id="menuBorrarAlumno"
-									mnemonicParsing="false" onAction="#borrarAlumno" text="Borrar" />
+								<MenuItem fx:id="menuCrearAlumno" mnemonicParsing="false" onAction="#crearAlumno" text="Añadir" />
+								<MenuItem fx:id="menuEditarAlumno" mnemonicParsing="false" onAction="#editarAlumno" text="Editar" />
 							</items>
 						</ContextMenu>
 					</contextMenu>
@@ -113,22 +81,15 @@
 				<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
 			</GridPane.margin>
 		</GridPane>
-		<GridPane minWidth="450.0" prefHeight="399.0"
-			prefWidth="450.0" GridPane.columnIndex="1"
-			GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+		<GridPane minWidth="450.0" prefHeight="399.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
 			<columnConstraints>
-				<ColumnConstraints hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="100.0" />
-				<ColumnConstraints hgrow="SOMETIMES"
-					minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+				<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 			</columnConstraints>
 			<rowConstraints>
-				<RowConstraints maxHeight="70.0" minHeight="4.0"
-					prefHeight="35.0" vgrow="SOMETIMES" />
-				<RowConstraints maxHeight="70.0" minHeight="2.0"
-					prefHeight="39.0" vgrow="SOMETIMES" />
-				<RowConstraints minHeight="10.0" prefHeight="324.0"
-					vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="70.0" minHeight="4.0" prefHeight="35.0" vgrow="SOMETIMES" />
+				<RowConstraints maxHeight="70.0" minHeight="2.0" prefHeight="39.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="10.0" prefHeight="324.0" vgrow="SOMETIMES" />
 				<RowConstraints />
 			</rowConstraints>
 			<children>
@@ -140,54 +101,37 @@
 						<FontIcon iconLiteral="fas-book" />
 					</graphic>
 				</Label>
-				<TextField fx:id="txtBuscarLibros" styleClass="txtField"
-					GridPane.rowIndex="1" />
-				<TableView fx:id="tblLibro"
-					onMouseClicked="#seleccionarFilaTbl" prefHeight="200.0"
-					prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2"
-					GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
+				<TextField fx:id="txtBuscarLibros" styleClass="txtField" GridPane.rowIndex="1" />
+				<TableView fx:id="tblLibro" onMouseClicked="#seleccionarFilaTbl" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2" GridPane.vgrow="SOMETIMES">
 					<columns>
-						<TableColumn fx:id="colCodigoLibro" prefWidth="77.0"
-							text="Codigo" />
-						<TableColumn fx:id="colTitulo" prefWidth="228.0"
-							text="Titulo" />
-						<TableColumn fx:id="colAutorLibro" prefWidth="141.0"
-							text="Autor" />
-						<TableColumn fx:id="colEstadoLibro" prefWidth="108.0"
-							text="Estado" />
+						<TableColumn fx:id="colCodigoLibro" prefWidth="77.0" text="Codigo" />
+						<TableColumn fx:id="colTitulo" prefWidth="228.0" text="Titulo" />
+						<TableColumn fx:id="colAutorLibro" prefWidth="141.0" text="Autor" />
+						<TableColumn fx:id="colEstadoLibro" prefWidth="108.0" text="Estado" />
 					</columns>
 					<contextMenu>
 						<ContextMenu>
 							<items>
-								<MenuItem fx:id="menuCrearLibro"
-									mnemonicParsing="false" onAction="#crearLibro" text="Crear" />
-								<MenuItem fx:id="menuEditarLibro"
-									mnemonicParsing="false" onAction="#editarLibro"
-									text="Editar" />
-								<MenuItem fx:id="menuBorrarLibro"
-									mnemonicParsing="false" onAction="#borrarLibro" text="Baja" />
+								<MenuItem fx:id="menuCrearLibro" mnemonicParsing="false" onAction="#crearLibro" text="Crear" />
+								<MenuItem fx:id="menuEditarLibro" mnemonicParsing="false" onAction="#editarLibro" text="Editar" />
+								<MenuItem fx:id="menuBorrarLibro" mnemonicParsing="false" onAction="#borrarLibro" text="Baja" />
 							</items>
 						</ContextMenu>
 					</contextMenu>
 				</TableView>
-				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-					spacing="10.0" GridPane.columnIndex="1"
-					GridPane.halignment="CENTER">
+				<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
 					<children>
-						<Button fx:id="btnCrearLibro" mnemonicParsing="false"
-							onAction="#crearLibroBtn" styleClass="botonNormal" text="Añadir">
+						<Button fx:id="btnCrearLibro" mnemonicParsing="false" onAction="#crearLibroBtn" styleClass="botonNormal" text="Añadir">
 							<tooltip>
 								<Tooltip text="Crear Libro" />
 							</tooltip>
 						</Button>
-						<Button fx:id="btnEditarLibro" mnemonicParsing="false"
-							onAction="#editarLibroBtn" styleClass="botonNormal" text="Editar">
+						<Button fx:id="btnEditarLibro" mnemonicParsing="false" onAction="#editarLibroBtn" styleClass="botonNormal" text="Editar">
 							<tooltip>
 								<Tooltip text="Modificar Libro" />
 							</tooltip>
 						</Button>
-						<Button fx:id="btnBorrarLibro" mnemonicParsing="false"
-							onAction="#borrarLibroBtn" styleClass="botonNormal" text="Baja">
+						<Button fx:id="btnBorrarLibro" mnemonicParsing="false" onAction="#borrarLibroBtn" styleClass="botonNormal" text="Baja">
 							<tooltip>
 								<Tooltip text="Dar de baja un libro" />
 							</tooltip>
@@ -199,8 +143,7 @@
 				<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
 			</GridPane.margin>
 		</GridPane>
-		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
-			spacing="500.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+		<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="500.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
 			<children>
 				<Label fx:id="lblAlumno" text="Nombre Alumno">
 					<font>
@@ -214,12 +157,7 @@
 				</Label>
 			</children>
 		</HBox>
-		<Button fx:id="btnPrestar" defaultButton="true"
-			mnemonicParsing="false" onAction="#realizarPrestamo"
-			prefHeight="39.0" prefWidth="233.0" styleClass="botonConfirmar"
-			text="Realizar Prestamo" textAlignment="CENTER"
-			GridPane.columnSpan="2" GridPane.halignment="CENTER"
-			GridPane.rowIndex="3" GridPane.valignment="CENTER">
+		<Button fx:id="btnPrestar" defaultButton="true" mnemonicParsing="false" onAction="#realizarPrestamo" prefHeight="39.0" prefWidth="233.0" styleClass="botonConfirmar" text="Realizar Prestamo" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
 			<font>
 				<Font size="19.0" />
 			</font>
@@ -234,36 +172,25 @@
 			<menus>
 				<Menu mnemonicParsing="false" text="Prestamos">
 					<items>
-						<MenuItem fx:id="menuGestionarPrestamo"
-							mnemonicParsing="false" onAction="#gestionarPrestamo"
-							text="Gestionar" />
+						<MenuItem fx:id="menuGestionarPrestamo" mnemonicParsing="false" onAction="#gestionarPrestamo" text="Gestionar" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Historico">
 					<items>
-						<MenuItem fx:id="menuGestionarHistorico"
-							mnemonicParsing="false" onAction="#gestionarHistorico"
-							text="Gestionar" />
+						<MenuItem fx:id="menuGestionarHistorico" mnemonicParsing="false" onAction="#gestionarHistorico" text="Gestionar" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Informes">
 					<items>
-						<MenuItem fx:id="menuInformeLibros"
-							mnemonicParsing="false" onAction="#informeLibros" text="Libros" />
-						<MenuItem fx:id="menuInformeGraficos"
-							mnemonicParsing="false" onAction="#informeGraficos"
-							text="Graficos" />
-						<MenuItem fx:id="menuInformeCalculos"
-							mnemonicParsing="false" onAction="#informeCalculos"
-							text="Calculos" />
+						<MenuItem fx:id="menuInformeLibros" mnemonicParsing="false" onAction="#informeLibros" text="Libros" />
+						<MenuItem fx:id="menuInformeGraficos" mnemonicParsing="false" onAction="#informeGraficos" text="Graficos" />
+						<MenuItem fx:id="menuInformeCalculos" mnemonicParsing="false" onAction="#informeCalculos" text="Calculos" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Ayuda">
 					<items>
-						<MenuItem fx:id="menuGuia" mnemonicParsing="false"
-							onAction="#abrirGuia" text="Guia" />
-						<MenuItem fx:id="menuManual" mnemonicParsing="false"
-							onAction="#abrirManual" text="Manual" />
+						<MenuItem fx:id="menuGuia" mnemonicParsing="false" onAction="#abrirGuia" text="Guia" />
+						<MenuItem fx:id="menuManual" mnemonicParsing="false" onAction="#abrirManual" text="Manual" />
 					</items>
 				</Menu>
 			</menus>

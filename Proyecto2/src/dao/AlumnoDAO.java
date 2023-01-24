@@ -20,8 +20,9 @@ public class AlumnoDAO {
 		PreparedStatement ps;
 		
 		ArrayList<Alumno> lstAlumno = new ArrayList<Alumno>();
+		
 		try {
-			ps= cn.getConexion().prepareStatement("select dni, nombre, apellido1, apellido2 from Alumno");
+			ps= cn.getConexion().prepareStatement("select dni, nombre, apellido1, apellido2 from libros.Alumno");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				lstAlumno.add(new Alumno(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
@@ -43,7 +44,7 @@ public class AlumnoDAO {
 		
 		Alumno alum = null;
 		try {
-			ps= cn.getConexion().prepareStatement("select dni, nombre, apellido1, apellido2 from Alumno where dni = ?");
+			ps= cn.getConexion().prepareStatement("select dni, nombre, apellido1, apellido2 from libros.Alumno where dni = ?");
 			ps.setString(1, dni);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -64,7 +65,7 @@ public class AlumnoDAO {
 	public void insertAlumno (Alumno alum) throws SQLException {
 		PreparedStatement ps;
 		
-		ps = cn.getConexion().prepareStatement("insert into Alumno (dni, nombre, apellido1, apellido2) values (?,?,?,?)");
+		ps = cn.getConexion().prepareStatement("insert into libros.Alumno (dni, nombre, apellido1, apellido2) values (?,?,?,?)");
 		ps.setString(1, alum.getDni());
 		ps.setString(2, alum.getNombre());
 		ps.setString(3, alum.getApellido1());
@@ -76,7 +77,7 @@ public class AlumnoDAO {
 	public void updateAlumno (Alumno alum, String dni) throws SQLException {
 		PreparedStatement ps;
 		
-		ps=cn.getConexion().prepareStatement("update Alumno set dni = ?, nombre = ?, apellido1 = ?, apellido2 = ? where dni = ?");
+		ps=cn.getConexion().prepareStatement("update libros.Alumno set dni = ?, nombre = ?, apellido1 = ?, apellido2 = ? where dni = ?");
 		
 		ps.setString(1, alum.getDni());
 		ps.setString(2, alum.getNombre());
@@ -91,7 +92,7 @@ public class AlumnoDAO {
 	public void deleteAlumno (Alumno alum) throws SQLException {
 		PreparedStatement ps;
 		
-		ps=cn.getConexion().prepareStatement("delete from Alumno where dni = ?");
+		ps=cn.getConexion().prepareStatement("delete from libros.Alumno where dni = ?");
 		ps.setString(1, alum.getDni());
 		
 		ps.executeUpdate();
