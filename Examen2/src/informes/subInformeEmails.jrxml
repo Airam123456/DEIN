@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subInformeEmails" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7090a1c6-4fe6-4909-ad2a-27dab9cfb63d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="examen2agenda"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="dni" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select email from email where dni = $P{dni}]]>
+	</queryString>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email"/>
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="email"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<rectangle>
+				<reportElement x="80" y="0" width="400" height="58" forecolor="#FFFFFF" backcolor="#FA0A0E" uuid="61a94a06-c2d8-46df-8994-29c0aaf80c98"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="230" y="16" width="100" height="30" forecolor="#FFFFFF" uuid="0b04afd9-f826-46f2-a734-ac17166c6d32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="23"/>
+				</textElement>
+				<text><![CDATA[EMAILS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="10" width="400" height="20" uuid="45948688-0477-4d46-9100-05e3d0fe3f92"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="80" y="30" width="400" height="1" forecolor="#FA0A0E" uuid="79029ecc-0b3c-444b-9b87-8e87cb471a48"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

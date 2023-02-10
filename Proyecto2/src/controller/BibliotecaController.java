@@ -118,6 +118,7 @@ public class BibliotecaController implements Initializable{
     private ObservableList<Libro> libros;
     
     private Alumno a;
+    private Libro l;
     
 
     @FXML
@@ -215,16 +216,17 @@ public class BibliotecaController implements Initializable{
     void seleccionarFilaLst(MouseEvent event) {
     	
     	a = (Alumno) lstAlumno.getSelectionModel().getSelectedItem();
-    	
-    	
-    	
+
     	lblAlumno.setText(a.getNombre() + " " + a.getApellido1() + " " + a.getApellido2());
     	
-
     }
 
     @FXML
     void seleccionarFilaTbl(MouseEvent event) {
+    	
+    	l = (Libro) tblLibro.getSelectionModel().getSelectedItem();
+    	
+    	lblLibro.setText(l.getTitulo());
 
     }
     

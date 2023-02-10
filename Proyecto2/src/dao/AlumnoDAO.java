@@ -62,6 +62,29 @@ public class AlumnoDAO {
 		return alum;
 	}
 	
+	
+	public boolean existeAlumno(Alumno alumno) {
+		PreparedStatement ps;
+		
+		try {
+			ps= cn.getConexion().prepareStatement("select * from Alumno where dni = ?");
+			ps.setString(1, alumno.getDni());
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText("Error de base de datos");
+			alert.showAndWait();
+			return true;
+		}
+		return false;
+	
+	}
+	
 	public void insertAlumno (Alumno alum) throws SQLException {
 		PreparedStatement ps;
 		

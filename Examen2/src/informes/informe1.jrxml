@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e9bb1a27-f975-4aa4-98f9-75524c5daafa">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Agenda"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString>
+		<![CDATA[select * from examen2.persona 
+order by anio_nacimiento]]>
+	</queryString>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="anio_nacimiento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="anio_nacimiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="anio_nacimiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<variable name="minAnio" class="java.lang.Integer" calculation="Lowest">
+		<variableExpression><![CDATA[$F{anio_nacimiento}]]></variableExpression>
+	</variable>
+	<variable name="maxAnio" class="java.lang.Integer" calculation="Highest">
+		<variableExpression><![CDATA[$F{anio_nacimiento}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="555" height="115" forecolor="#0066FF" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false"/>
+				</textElement>
+				<text><![CDATA[INFORME 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="50" y="115" width="504" height="37" uuid="bd605e96-6228-492c-9dd6-f33258081a5a"/>
+				<textElement textAlignment="Right">
+					<font size="19"/>
+				</textElement>
+				<text><![CDATA[Agenda grupada por año de nacimiento]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="560" height="25" backcolor="#0066FF" uuid="eb0fefed-b830-492b-a0c9-ec23411537a7"/>
+				<staticText>
+					<reportElement x="10" y="0" width="100" height="21" forecolor="#FFFFFF" uuid="59dc2b94-4933-4585-8520-f1f1fdb36d22"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[DNI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="80" y="0" width="100" height="21" forecolor="#FFFFFF" uuid="acc034bd-8200-4805-80d1-0c2bb30ab147"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[NOMBRE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="0" width="100" height="21" forecolor="#FFFFFF" uuid="bb571cf6-308a-4798-9fe3-808127ea3c8a"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[PRIMER APELLIDO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="380" y="0" width="163" height="21" forecolor="#FFFFFF" uuid="eb7381e8-06d6-42df-95cf-95f06fb4c9ce"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[SEGUNDO APELLIDO]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="108" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="80" y="60" width="474" height="1" uuid="2b97af27-2a1e-491f-a0f4-b2549a3510ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="40" width="70" height="30" uuid="32efe4e0-e55a-4066-98f4-3de14c03c68f"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="39" width="100" height="30" uuid="5cac83e7-233d-49f2-bb33-f5e5771c23f1"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="40" width="100" height="30" uuid="1e65282a-e8d6-4290-b4b0-22d468eb0953"/>
+				<textFieldExpression><![CDATA[$F{apellido1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="39" width="100" height="30" uuid="c953a86f-dcce-4ff9-a6f4-1aca2a993af4"/>
+				<textFieldExpression><![CDATA[$F{apellido2}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="10" width="43" height="18" forecolor="#0066FF" backcolor="#0066FF" uuid="e2ea7345-dd90-4653-927f-7a861c9d4fa4"/>
+			</rectangle>
+			<textField>
+				<reportElement style="SubTitle" x="50" y="10" width="405" height="29" forecolor="#000000" uuid="81afeefd-904c-408b-886d-241b2c8cb0f3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anio_nacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="70" width="440" height="30" uuid="38654846-3da8-4d14-82a5-476d0eb986bb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Numero de personas del año " + $F{anio_nacimiento} + " :"+ $V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="111" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="25" width="100" height="86" backcolor="#0066FF" uuid="aea5e5b5-a552-452b-8fca-4978e971dbac"/>
+			</rectangle>
+			<textField>
+				<reportElement x="-20" y="26" width="100" height="85" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="392ca60a-37e5-4f3c-b9ae-88032d6aa71a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="33"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="80" width="100" height="25" uuid="5beec339-8483-42cf-87f6-f508d690bb22"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<text><![CDATA[Airam Brito]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="82" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="0" width="210" height="30" uuid="632b6b12-04af-407e-94fc-7ea8a03e170f"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Año mínimo"+$V{minAnio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="30" width="210" height="30" uuid="9a053350-bbf7-4258-b02f-fb2c31138ee0"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Año máximo"+$V{minAnio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
