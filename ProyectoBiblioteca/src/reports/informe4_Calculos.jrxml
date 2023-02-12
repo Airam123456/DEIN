@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1efb097-51bc-41f9-9fcd-41b3a24c41fb">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="323"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="668"/>
+	<queryString language="SQL">
+		<![CDATA[select 
+  distinct(select count(id_prestamo) from Historico_prestamo where dni_alumno=dni) as totalPrestamos,
+  (select count(*) from Alumno) as totalAlumnos,
+  (select count(codigo_libro) from Prestamo where dni_alumno=dni) as librosActuales,
+  (select count(id_prestamo) from Historico_prestamo,Alumno where dni=dni_alumno and datediff(fecha_prestamo,fecha_devolucion)>15 ) as retrasos,
+  dni,nombre,apellido1,apellido2
+from Alumno]]>
+	</queryString>
+	<field name="totalPrestamos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="totalPrestamos"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalPrestamos"/>
+	</field>
+	<field name="totalAlumnos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="totalAlumnos"/>
+		<property name="com.jaspersoft.studio.field.label" value="totalAlumnos"/>
+	</field>
+	<field name="librosActuales" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="librosActuales"/>
+		<property name="com.jaspersoft.studio.field.label" value="librosActuales"/>
+	</field>
+	<field name="retrasos" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="retrasos"/>
+		<property name="com.jaspersoft.studio.field.label" value="retrasos"/>
+	</field>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="apellido1" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido1"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<field name="apellido2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido2"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Alumno"/>
+	</field>
+	<variable name="prestamosPorAlumno" class="java.lang.Integer" resetType="Column" incrementType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalPrestamos}+$F{librosActuales}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="TotalPrestamos" class="java.lang.Integer" incrementType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$V{prestamosPorAlumno}]]></variableExpression>
+	</variable>
+	<variable name="TotalRetrasos" class="java.lang.Integer" incrementType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{retrasos}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="0" width="550" height="78" backcolor="#467E81" uuid="5a19bc3c-7591-4956-8c1a-0d53225d328c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="53" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alumnos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="191" splitType="Stretch">
+			<line>
+				<reportElement x="210" y="20" width="1" height="109" uuid="fe3333b8-562b-41ac-995e-8284f33862f2"/>
+			</line>
+			<line>
+				<reportElement x="210" y="50" width="250" height="1" uuid="d16c6188-1e57-4e25-89f6-8bac481ff835"/>
+			</line>
+			<textField>
+				<reportElement x="211" y="20" width="249" height="30" uuid="243a53f0-1032-4a5f-b9d8-3fe2ed6d6ef4"/>
+				<box padding="2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}+", "+$F{apellido1}+" "+$F{apellido2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="51" width="155" height="30" uuid="e801d923-4bf7-4600-b91f-f7ab7db222ab"/>
+				<box topPadding="0" leftPadding="7" bottomPadding="0" rightPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Total de prestamos: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="81" width="155" height="30" uuid="72670dff-39ab-4243-8b27-0db26e0474aa"/>
+				<box topPadding="0" leftPadding="7" bottomPadding="0" rightPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Libros en posesion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="110" width="100" height="30" uuid="848e9b04-a8c6-4380-a87d-20c52adf9baa"/>
+				<box topPadding="0" leftPadding="7" bottomPadding="0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Retrasos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="51" width="100" height="30" uuid="1ec46025-c22d-4147-a70a-f31cdb67de68"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{prestamosPorAlumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="81" width="100" height="30" uuid="b2d824e1-2c9c-4753-a098-28cc35d51187"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{librosActuales}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="110" width="100" height="30" uuid="07aa936f-82ad-4945-9f61-b3f7d5b4ba00"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{retrasos}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="20" y="10" width="160" height="150" uuid="bba61953-27ea-477e-b314-2103ca4a2668"/>
+				<imageExpression><![CDATA["resources/alumno.png"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="154" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="58" width="595" height="85" forecolor="rgba(0, 0, 0, 0.0)" backcolor="#CAE6DA" uuid="84cf9c91-b9d8-42ec-a78a-87b7f1cd7b10"/>
+			</rectangle>
+			<textField>
+				<reportElement x="453" y="80" width="100" height="30" uuid="c1af71e8-b0b8-4d62-aa53-03bf7ac0d90f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="20" width="121" height="30" uuid="24968c7c-7f6d-4f03-8e7b-37408b518920"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Alumnos citados]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="20" width="60" height="30" uuid="ff8f4fec-cee2-46e7-84d1-03af3fe961c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="20" width="100" height="30" uuid="1e175673-a183-44c7-b6ad-b0f70856cb81"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAlumnos}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="20" y="70" width="50" height="50" uuid="0d3ab7e3-d3f0-4d46-aaf0-0bde1acacff7"/>
+				<imageExpression><![CDATA["resources/logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="135">
+			<staticText>
+				<reportElement x="408" y="27" width="105" height="30" uuid="521cb5e2-c1ef-4c6f-b6fe-28ebb9317d0a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total de retrasos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="62" width="100" height="30" uuid="41194d3e-ecf3-42ed-be21-0b35738d28de"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Media de retrasos por alumno]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="27" width="34" height="30" uuid="457f9344-3928-44dc-8715-fe677dc32bb4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{TotalRetrasos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="508" y="62" width="34" height="30" uuid="a2c85e9d-bffa-4678-9dcf-80dff98c02e2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{TotalRetrasos}/$F{totalAlumnos}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

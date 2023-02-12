@@ -1,0 +1,31 @@
+#GridPane { 
+	-fx-background-color: #d1f2eb;
+}
+
+.botonNormal {
+	-fx-background-color:  #aed6f1 ;
+}
+
+.botonConfirmar {
+	-fx-background-color:  #aed6f1 ;
+}
+
+.txtField {
+	-fx-background-color:  #d6eaf8 ;
+}
+
+#menuBar {
+	-fx-background-color:  #5499c7;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+	-fx-background-color:  #3498db ;
+}
+
+.list-view {
+    -fx-selection-bar: #3498db  ;
+}
+
+.menu-item:focused {
+     -fx-background-color:  #3498db ;
+}
