@@ -1,0 +1,10 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.azul{
+	 -fx-background-color: #85C1E9;
+}
+.verde{
+	 -fx-background-color: #A3E4D7;
+}
+.rojo{
+	 -fx-background-color:#EC7063;
+}
