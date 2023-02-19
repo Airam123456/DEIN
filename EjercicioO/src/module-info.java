@@ -1,6 +1,9 @@
 module EjercicioO {
 	requires javafx.controls;
 	requires javafx.fxml;
+	requires javafx.graphics;
 	
-	opens application to javafx.graphics, javafx.fxml;
+	opens com.dein.productolabelwidget;
+	exports com.dein.productolabelwidget;
+	
 }
